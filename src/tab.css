@@ -1,0 +1,10 @@
+.scroll{
+	overflow:auto;
+	height:75vh;
+	text-align: center !important;
+
+}
+
+h1{
+	width:100%;
+}
