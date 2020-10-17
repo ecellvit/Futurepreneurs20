@@ -16,9 +16,10 @@ import axios from "axios";
 
 function LoginPage() {
   const [code, changeCode] = useState("");
+  const [user, changeUser] = useState("");
   const [password, changePassword] = useState("");
  
-
+  const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const [errorText, setErrorText] = useState(
@@ -29,7 +30,6 @@ function LoginPage() {
   const [ownerRedirect, setOwnerRedirect] = useState(false);
   const [loginRedirect, setLoginRedirect] = useState(false);
   const [isLoading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
   const backend = "https://fp20.herokuapp.com"
   
   const handleCodeChange = (event) => {
@@ -59,8 +59,9 @@ function LoginPage() {
     };
     console.log(url,data);
     try {
-      await axios.post(url, data).then((res) => {
-        console.log(res);
+      await axios.post(url, data)
+       .then((res) => 
+       {console.log(res);
         if(res.status==200){
         localStorage.setItem("authToken", res.data.token);
         localStorage.setItem("userType", res.data.teamDetails.userType);
@@ -73,9 +74,10 @@ function LoginPage() {
       setLoading(false);
     }
   };
-
-  if (success) {
-    return <h1>Login success</h1>;
+  
+  if (success) 
+  {
+    return <Redirect to="/amenities"/>;
   }
 
   return (

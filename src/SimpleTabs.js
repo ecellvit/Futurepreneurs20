@@ -79,6 +79,12 @@ export default function SimpleTabs() {
             <Grid item><SimpleCard/></Grid>
             <Grid item><SimpleCard/></Grid>
             <h1>Marketing</h1>
+            <Grid item><SimpleCard/></Grid>
+            <Grid item><SimpleCard/></Grid>
+            <Grid item><SimpleCard/></Grid>
+            <Grid item><SimpleCard/></Grid>
+            <Grid item><SimpleCard/></Grid>
+
             </Grid>
       </TabPanel>
       <TabPanel value={value} index={1} className="scroll">
@@ -94,6 +100,12 @@ export default function SimpleTabs() {
             <Grid item><SimpleCard/></Grid>
             <Grid item><SimpleCard/></Grid>
             <h1>Marketing</h1>
+            <Grid item><SimpleCard/></Grid>
+            <Grid item><SimpleCard/></Grid>
+            <Grid item><SimpleCard/></Grid>
+            <Grid item><SimpleCard/></Grid>
+            <Grid item><SimpleCard/></Grid>
+
             </Grid>
       </TabPanel>
     </div>
