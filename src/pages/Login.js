@@ -5,9 +5,10 @@ import {
   IconButton,
   CircularProgress,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import TextInput from "../components/TextInput";
+import InfoContext from "../context/InfoContext";
 import "./Login.css";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import ActionButton from "../components/ActionButton";
@@ -16,14 +17,15 @@ import axios from "axios";
 function LoginPage() {
   const [code, changeCode] = useState("");
   const [password, changePassword] = useState("");
-
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const [errorText, setErrorText] = useState(
     "Error Logging In! Try again...."
   );
-
+  const { setLoggedIn, setTeamCode, setAuthToken, setUserType } = useContext(
+		InfoContext
+	);
   const [isLoading, setLoading] = useState(false);
   const backend = process.env.REACT_APP_BACKEND_URL;
 
@@ -58,8 +60,13 @@ function LoginPage() {
         .then((res) => {
           console.log(res);
           if (res.status === 200) {
+            setAuthToken(res.data.token);
+            setUserType(res.data.teamDetails.userType);
+            setLoggedIn(true);
+            setTeamCode(res.data.teamDetails.code);
             localStorage.setItem("authToken", res.data.token);
             localStorage.setItem("userType", res.data.teamDetails.userType);
+            localStorage.setItem("teamCode", res.data.teamDetails.code);
             setLoading(false);
             setSuccess(true);
           }

@@ -1,15 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import "./Navbar.css";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ActionButton from "./ActionButton";
+import InfoContext from "../context/InfoContext";
 
 function Navbar() {
+	const { isLoggedIn, setLoggedIn, setAuthToken, setUserType, setTeamCode, teamCode } = useContext(InfoContext);
 	const logout = () => {
-		localStorage.removeItem("authToken");
-		localStorage.removeItem("userType");
-		window.location.reload();
+		localStorage.clear();
+		setLoggedIn(false);
+		setAuthToken(null);
+		setUserType(null);
+		setTeamCode(null);
 	}
+
+	useEffect(() => {
+		let loggedin = localStorage.getItem("authToken");
+		if (loggedin !== null) {
+			setLoggedIn(true);
+			setTeamCode(localStorage.getItem("teamCode"));
+			setAuthToken(loggedin);
+			setUserType(localStorage.getItem("userType"));
+		} else {
+			setLoggedIn(false);
+			setAuthToken(null);
+			setUserType(null);
+			setTeamCode(null);
+		}
+	})
+
 	return (
 		<AppBar position="static" className="navbar" elevation={0}>
 			<Toolbar className="nav-toolbar">
@@ -21,7 +41,8 @@ function Navbar() {
 					/>
 					<div className="nav-text"><div>FUTUREP<span>₹</span>ENEURS</div></div>
 				</Link>
-				{localStorage.getItem("authToken") ? <ActionButton className="nav-btn" onClick={logout}>Log Out</ActionButton> : <></>}
+				<div className="nav-hello"><div>{teamCode}</div></div>
+				{isLoggedIn ? <ActionButton onClick={logout}>Log Out</ActionButton> : null}
 			</Toolbar>
 		</AppBar>
 	);

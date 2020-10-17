@@ -35,7 +35,10 @@
 	transition: ease-in 0.2s;
 }
 
-.nav-btn {
-	margin-right: 0 !important;
+.nav-hello {
+	margin-right: 10px !important;
 	margin-left: auto !important;
+	color: #000 !important;
+	font-size: 1.6rem;
+	font-weight: 500;
 }
