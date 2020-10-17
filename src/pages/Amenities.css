@@ -1,15 +1,3 @@
-.login-page {
-	min-height: calc(100vh - 100px);
-	display: flex !important;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
- 
-/* .login-page .MuiFormLabel-root {
-	font-family: "Montserrat", sans-serif !important;
-} */
-
 .form {
 	margin-top: 5%;
 	width: 50%;
@@ -18,7 +6,7 @@
 
 .login-head {
 	font-family: 'Inter', sans-serif !important;
-	color: #5757ff !important;
+	color: #009C07 !important;
 	font-weight: 900 !important;
 }
 
@@ -79,19 +67,19 @@
 
 .transparent-variant {
 	background-color: transparent !important;
-	border: 1px solid #5757ff !important;
+	border: 1px solid #009C07 !important;
 	padding: 10px 50px !important;
 	margin-top: 15px !important;
 }
 
 .transparent-variant:hover {
-	background-color: #5757ff !important;
+	background-color: #009C07 !important;
 }
 
 .btn-seperator {
 	font-family: "Inter", sans-serif !important;
 	font-weight: 700 !important;
-	color: #5757ff !important;
+	color: #009C07 !important;
 }
 
 @media screen and (max-width: 400px) {
@@ -101,7 +89,7 @@
 }
 
 .view-pass-icon {
-	color: #5757ff !important;
+	color: #009C07 !important;
 }
 
 .MuiFormLabel-root {

@@ -7,7 +7,7 @@ function ImageSelect({selected, setSelected, images}) {
 		<div className="image-select">
 			<Grid container spacing={3}>
 				{images.map(image => (
-					<Grid item xs={6} className="img-container" style={{border: selected === image.key?"2px #5757ff solid": null}} onClick={() => setSelected(image.key)}>
+					<Grid item xs={6} className="img-container" style={{border: selected === image.key?"2px #009C07 solid": null}} onClick={() => setSelected(image.key)}>
 						<img src={image.src} alt={image.name} className="img-preview" />
 					</Grid>
 				))}

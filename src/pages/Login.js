@@ -6,19 +6,17 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-import TextInput from "../components/TextInput/TextInput";
-import Navbar from "../components/Navbar/Navbar";
+import { Redirect } from "react-router-dom";
+import TextInput from "../components/TextInput";
 import "./Login.css";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-import ActionButton from "../components/ActionButton/ActionButton";
+import ActionButton from "../components/ActionButton";
 import axios from "axios";
 
 function LoginPage() {
   const [code, changeCode] = useState("");
-  const [user, changeUser] = useState("");
   const [password, changePassword] = useState("");
- 
+
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -26,24 +24,21 @@ function LoginPage() {
     "Error Logging In! Try again...."
   );
 
-  const [redirect, setRedirect] = useState(false);
-  const [ownerRedirect, setOwnerRedirect] = useState(false);
-  const [loginRedirect, setLoginRedirect] = useState(false);
   const [isLoading, setLoading] = useState(false);
-  const backend = "https://fp20.herokuapp.com"
-  
+  const backend = process.env.REACT_APP_BACKEND_URL;
+
   const handleCodeChange = (event) => {
     changeCode(event.target.value);
   };
-  
+
   const handlePasswordChange = (event) => {
     changePassword(event.target.value);
   };
-  
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  
+
   const keyPress = (event) => {
     if (event.key === "Enter") {
       handleSubmit();
@@ -57,32 +52,32 @@ function LoginPage() {
       code,
       password,
     };
-    console.log(url,data);
+    console.log(url, data);
     try {
       await axios.post(url, data)
-       .then((res) => 
-       {console.log(res);
-        if(res.status==200){
-        localStorage.setItem("authToken", res.data.token);
-        localStorage.setItem("userType", res.data.teamDetails.userType);
-        setLoading(false);
-        setSuccess(true);
-      }});
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            localStorage.setItem("authToken", res.data.token);
+            localStorage.setItem("userType", res.data.teamDetails.userType);
+            setLoading(false);
+            setSuccess(true);
+          }
+        });
     } catch (error) {
       console.log(error);
       changePassword("");
       setLoading(false);
     }
   };
-  
-  if (success) 
-  {
-    return <Redirect to="/amenities"/>;
+
+  if (success) {
+    return <Redirect to="/" />;
   }
 
   return (
     <>
-      <Container className="login-page">
+      <Container className="page-container">
         <Typography variant="h3" color="primary" className="login-head">
           LOGIN
         </Typography>
@@ -95,7 +90,7 @@ function LoginPage() {
             variant="outlined"
             value={code}
             onChange={handleCodeChange}
-          ></TextInput>
+          />
           <br />
           <TextInput
             id="password"
@@ -118,8 +113,8 @@ function LoginPage() {
                     {showPassword ? (
                       <Visibility />
                     ) : (
-                      <VisibilityOff />
-                    )}
+                        <VisibilityOff />
+                      )}
                   </IconButton>
                 </InputAdornment>
               ),
@@ -136,12 +131,12 @@ function LoginPage() {
             {!isLoading ? (
               "LOGIN"
             ) : (
-              <CircularProgress
-                color="secondary"
-                size={20}
-                thickness={5}
-              />
-            )}
+                <CircularProgress
+                  color="secondary"
+                  size={20}
+                  thickness={5}
+                />
+              )}
           </ActionButton>
         </div>
       </Container>

@@ -1,10 +1,10 @@
 import React from 'react';
 import '../App.css';
 import {Grid,Typography} from '@material-ui/core';
-import SimpleTabs from '../SimpleTabs';
-import BasicTextFields from '../form';
-import BasicTextField from '../readOnlyBox';
-import TextInput from "../components/TextInput/TextInput";
+import SimpleTabs from '../components/SimpleTabs';
+import BasicTextFields from '../components/form';
+import BasicTextField from '../components/readOnlyBox';
+import TextInput from "../components/TextInput";
 
 export default function Amenities() {
   return (

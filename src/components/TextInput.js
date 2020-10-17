@@ -6,10 +6,10 @@ const TextInput = withStyles({
 			color: "#dddddd",
 		},
 		"& label.Mui-focused": {
-			color: "#5757ff",
+			color: "#009C07",
 		},
 		"& .MuiInput-underline:after": {
-			borderBottomColor: "#5757ff",
+			borderBottomColor: "#009C07",
 		},
 		"& .MuiInputBase-input": {
 			color: "#333333 !important",
@@ -20,10 +20,10 @@ const TextInput = withStyles({
 				borderRadius: "50px",
 			},
 			"&:hover fieldset": {
-				borderColor: "#5757ff",
+				borderColor: "#009C07",
 			},
 			"&.Mui-focused fieldset": {
-				borderColor: "#5757ff",
+				borderColor: "#009C07",
 			},
 		},
 	},

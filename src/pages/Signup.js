@@ -7,11 +7,11 @@ import {
   } from "@material-ui/core";
   import React, { useState } from "react";
   import { Link, Redirect } from "react-router-dom";
-  import TextInput from "../components/TextInput/TextInput";
-  import Navbar from "../components/Navbar/Navbar";
+  import TextInput from "../components/TextInput";
+  // import Navbar from "../components/Navbar/Navbar";
   import "./Login.css";
   import { Visibility, VisibilityOff } from "@material-ui/icons";
-  import ActionButton from "../components/ActionButton/ActionButton";
+  import ActionButton from "../components/ActionButton";
   import axios from "axios";
   
   function LoginPage() {
@@ -82,7 +82,7 @@ import {
   
     return (
       <>
-        <Container className="login-page">
+        <Container className="page-container">
           <Typography variant="h3" color="primary" className="login-head">
             Signup
           </Typography>
