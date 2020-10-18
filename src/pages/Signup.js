@@ -19,6 +19,7 @@ function LoginPage() {
   const [TName, changeTName] = useState("");
   const [LPass, changeLPass] = useState("");
   const [SPass, changeSPass] = useState("");
+  const [Message, setMessage] = useState("");
 
   const [user, changeUser] = useState("");
   const [password, changePassword] = useState("");
@@ -60,6 +61,7 @@ function LoginPage() {
     setShowPassword2(!showPassword2);
   };
 
+
   const keyPress = (event) => {
     if (event.key === "Enter") {
       handleSubmit();
@@ -67,13 +69,14 @@ function LoginPage() {
   };
 
   const handleSubmit = async () => {
+    setMessage("");
     const url = `${backend}/team/reg`;
     setLoading(true);
     const data = {
-    name: TName,
-    code: TCode,
-    adminPass: LPass,
-    specPass: SPass,
+      name: TName,
+      code: TCode,
+      adminPass: LPass,
+      specPass: SPass,
     };
     console.log(url, data);
     try {
@@ -81,11 +84,14 @@ function LoginPage() {
         .then((res) => {
           console.log(res);
           console.log(res.status);
-          if (res.status == 201) {
-            localStorage.setItem("authToken", res.data.token);
-            localStorage.setItem("userType", res.data.teamDetails.userType);
+          if (res.status == 200) {
+            setMessage(res.data.message);
             setLoading(false);
             setSuccess(true);
+          }
+          else{
+            setMessage(res.data.message);
+            setLoading(false);
           }
         });
     } catch (error) {
@@ -94,10 +100,6 @@ function LoginPage() {
       setLoading(false);
     }
   };
-
-  if (success) {
-    return <Redirect to="/dashboard" />;
-  }
 
   return (
     <>
@@ -184,6 +186,8 @@ function LoginPage() {
             }}
           ></TextInput>
         </form>
+        <br />
+          <h5>{Message}</h5>
         <br />
         <div className="login-btn-div">
           <ActionButton

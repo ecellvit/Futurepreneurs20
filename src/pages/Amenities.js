@@ -7,7 +7,11 @@ import './Amenities.css';
 
 export default function Amenities() {
 
-  const [cost, setCost] = useState("");
+  const [totalCost, setTotalCost] = useState("");
+  const [PAcost, setPAcost] = useState("");
+  const [PMcost, setPMcost] = useState("");
+  const [EAcost, setEAcost] = useState("");
+  const [EMcost, setEMcost] = useState("");
 
   return (
     <div className="App">
@@ -30,7 +34,7 @@ export default function Amenities() {
               variant="outlined" />
           </Grid>
           <Grid item sm={2}>
-            <Chip color="primary" label={`Total Cost:${cost}`} variant="outlined" className="chip" />
+            <Chip color="primary" label={`Total Cost:${totalCost}`} variant="outlined" className="chip" />
           </Grid>
         </Grid>
         <Grid item container>
@@ -40,21 +44,11 @@ export default function Amenities() {
             </Typography>
             <br />
             <Grid item>
-              <TextInput
-                id="password"
-                type={"text"}
-                label="Amenities Cost"
-                className="input"
-                variant="outlined" />
+            <Chip color="primary" label={`Amenities Cost:${PAcost}`} variant="outlined" className="chip" />
             </Grid>
             <br />
             <Grid item>
-              <TextInput
-                id="password"
-                type={"text"}
-                label="Marketing Cost"
-                className="input"
-                variant="outlined" />
+            <Chip color="primary" label={`Marketing Cost:${PMcost}`} variant="outlined" className="chip" />
             </Grid>
             <br />
             <Grid item>
@@ -65,21 +59,11 @@ export default function Amenities() {
             </Typography>
             <br />
             <Grid item>
-              <TextInput
-                id="password"
-                type={"text"}
-                label="Amenities Cost"
-                className="input"
-                variant="outlined" />
+            <Chip color="primary" label={`Amenities Cost:${EAcost}`} variant="outlined" className="chip" />
             </Grid>
             <br />
             <Grid item>
-              <TextInput
-                id="password"
-                type={"text"}
-                label="Marketing Cost"
-                className="input"
-                variant="outlined" />
+            <Chip color="primary" label={`Marketing Cost:${EMcost}`} variant="outlined" className="chip" />
             </Grid>
             <br />
             <Grid item>
