@@ -37,8 +37,9 @@ export default function Amenities() {
             <Chip color="primary" label={`Total Cost:${totalCost}`} variant="outlined" className="chip" />
           </Grid>
         </Grid>
+        <br/>
         <Grid item container>
-          <Grid item conatiner direction="column" sm={2}>
+          <Grid item container direction="column" sm={2}>
             <Typography variant="h5" color="primary" className="room-title">
               Premium Room
             </Typography>

@@ -20,3 +20,10 @@ h1{
 	display: flex;
 	justify-content: space-around;
 }
+
+
+.marketing {
+    font-family: 'Inter', sans-serif !important;
+    color: #009C07 !important;
+    font-weight: 900 !important;
+}
