@@ -38,9 +38,14 @@
 }
 
 .page-container {
-	min-height: calc(100vh - 84px);
+	height: calc(100vh - 84px);
 	display: flex !important;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+  flex-direction: column;
+  overflow: auto;
+}
+
+a {
+  text-decoration: none !important;
 }
