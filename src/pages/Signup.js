@@ -89,7 +89,7 @@ function LoginPage() {
             setLoading(false);
             setSuccess(true);
           }
-          else{
+          else {
             setMessage(res.data.message);
             setLoading(false);
           }
@@ -102,8 +102,8 @@ function LoginPage() {
   };
 
   return (
-    <>
-      <Container className="page-container">
+    <div className="page-container">
+      <div className="inner-data">
         <Typography variant="h3" color="primary" className="login-head">
           Signup
           </Typography>
@@ -187,7 +187,7 @@ function LoginPage() {
           ></TextInput>
         </form>
         <br />
-          <h5>{Message}</h5>
+        <h5>{Message}</h5>
         <br />
         <div className="login-btn-div">
           <ActionButton
@@ -206,8 +206,8 @@ function LoginPage() {
               )}
           </ActionButton>
         </div>
-      </Container>
-    </>
+      </div>
+    </div>
   );
 }
 
