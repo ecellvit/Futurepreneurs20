@@ -39,7 +39,7 @@ export default function Amenities() {
         </Grid>
         <Grid item container>
           <Grid item conatiner direction="column" sm={2}>
-            <Typography variant="h5" color="primary" className="login-head">
+            <Typography variant="h5" color="primary" className="room-title">
               Premium Room
             </Typography>
             <br />

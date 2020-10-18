@@ -19,6 +19,7 @@ function LoginPage() {
   const [password, changePassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [Message, setMessage] = useState("");
 
   const [errorText, setErrorText] = useState(
     "Error Logging In! Try again...."
@@ -70,8 +71,13 @@ function LoginPage() {
             setLoading(false);
             setSuccess(true);
           }
+          else {
+            setMessage(res.data.message);
+            setLoading(false);
+          }
         });
-    } catch (error) {
+    }
+    catch (error) {
       console.log(error);
       changePassword("");
       setLoading(false);
@@ -79,11 +85,11 @@ function LoginPage() {
   };
 
   useEffect(() => {
-		let loggedin = localStorage.getItem("authToken");
-		if (loggedin !== null) {
-			setSuccess(true);
-		}
-	})
+    let loggedin = localStorage.getItem("authToken");
+    if (loggedin !== null) {
+      setSuccess(true);
+    }
+  })
 
   if (success) {
     return <Redirect to="/" />;
@@ -135,6 +141,10 @@ function LoginPage() {
             }}
           ></TextInput>
         </form>
+        <br />
+        <Typography variant="h5" color="secondary">
+          {Message}
+        </Typography>
         <br />
         <div className="login-btn-div">
           <ActionButton
