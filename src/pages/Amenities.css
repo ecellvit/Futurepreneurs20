@@ -3,7 +3,16 @@
 }
 .chip{
     height:55px !important;
-    width:170px !important;
+    width:230px !important;
     font-size:1.1rem !important;
     font-weight: 500 !important;
+    border-radius: 25px !important;
+    color: #444444 !important;
+    border-color: #009c07 !important;
+} 
+
+.room-title {
+	font-family: 'Inter', sans-serif !important;
+	color: #009C07 !important;
+	font-weight: 900 !important;
 }

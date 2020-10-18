@@ -19,6 +19,7 @@ function LoginPage() {
   const [password, changePassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [Message, setMessage] = useState("");
 
   const { setLoggedIn, setTeamCode, setAuthToken, setUserType } = useContext(
     InfoContext
@@ -67,8 +68,13 @@ function LoginPage() {
             setLoading(false);
             setSuccess(true);
           }
+          else {
+            setMessage(res.data.message);
+            setLoading(false);
+          }
         });
-    } catch (error) {
+    }
+    catch (error) {
       console.log(error);
       changePassword("");
       setLoading(false);
@@ -132,6 +138,10 @@ function LoginPage() {
             }}
           ></TextInput>
         </form>
+        <br />
+        <Typography variant="h5" color="secondary">
+          {Message}
+        </Typography>
         <br />
         <div className="login-btn-div">
           <ActionButton
