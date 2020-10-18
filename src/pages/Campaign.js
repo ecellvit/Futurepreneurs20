@@ -12,6 +12,7 @@ import ImageSelect from "../components/ImageSelect";
 function Campaign() {
     const [desc, changeDesc] = useState("");
     const [image, setImage] = useState(0);
+    const [Message, setMessage] = useState("");
     const images = [
         {
             key: 0,
@@ -41,18 +42,25 @@ function Campaign() {
             imageURL: images[image].src
         };
         console.log(url, data);
-        try {
-            await axios.post(url, data, {headers: {
-                "auth-token" : localStorage.getItem("authToken")
-            }})
-                .then((res) => {
-                    console.log(res);
-                    if (res.status === 200) {
-                        setLoading(false);
+        if (localStorage.getItem("userType") === "L") {
+            try {
+                await axios.post(url, data, {
+                    headers: {
+                        "auth-token": localStorage.getItem("authToken")
                     }
-                });
-        } catch (error) {
-            console.log(error);
+                })
+                    .then((res) => {
+                        console.log(res);
+                        if (res.status === 200) {
+                            setLoading(false);
+                        }
+                    });
+            } catch (error) {
+                console.log(error);
+                setLoading(false);
+            }
+        } else {
+            setMessage("You are not authorised as Team Leader")
             setLoading(false);
         }
     };
@@ -60,11 +68,11 @@ function Campaign() {
     useEffect(() => {
         let isLogged = localStorage.getItem("authToken");
         if (isLogged === null) {
-          setRedirect(true);
+            setRedirect(true);
         }
     })
 
-    if(redirect) {
+    if (redirect) {
         return <Redirect to="/" />
     }
 
@@ -88,6 +96,10 @@ function Campaign() {
                         onChange={handleDescChange}
                     />
                 </form>
+                <br />
+                <Typography variant="h5" color="secondary">
+                    {Message}
+                </Typography>
                 <br />
                 <div className="login-btn-div">
                     <ActionButton

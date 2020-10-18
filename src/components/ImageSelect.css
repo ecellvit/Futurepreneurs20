@@ -1,5 +1,6 @@
 .image-select {
 	margin: 15px 5px;
+	width: 60%;
 }
 .img-container {
 	object-fit: contain !important;
