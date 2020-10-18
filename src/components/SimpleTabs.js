@@ -61,52 +61,64 @@ export default function SimpleTabs() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+        <Tabs value={value} onChange={handleChange} className="tabs">
           <Tab label="Premium Rooms" {...a11yProps(0)} />
           <Tab label="Standard Rooms" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} className="scroll">
-        <Grid container spacing={2} alignItems="center">
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <h1>Marketing</h1>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-
-            </Grid>
+        <Grid container spacing={3} alignItems="center">
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+        </Grid>
+        <br />
+        <Typography variant="h4" color="primary" className="marketing">
+           Marketing
+        </Typography>
+        <br />
+        <Grid container spacing={3} alignItems="center">
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+        </Grid>
       </TabPanel>
       <TabPanel value={value} index={1} className="scroll">
-        <Grid container spacing={2} alignItems="center">
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <h1>Marketing</h1>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-            <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg"/></Grid>
-
-            </Grid>
+        <Grid container spacing={3} alignItems="center">
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+        </Grid>
+        <br />
+        <Typography variant="h4" color="primary" className="marketing">
+          Marketing
+        </Typography>
+        <br />
+        <Grid container spacing={3} alignItems="center">
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+        </Grid>
       </TabPanel>
     </div>
   );
