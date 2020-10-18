@@ -15,7 +15,11 @@ import {
   import axios from "axios";
   
   function LoginPage() {
-    const [code, changeCode] = useState("");
+    const [TCode, changeTCode] = useState("");
+    const [TName, changeTName] = useState("");
+    const [LPass, changeLPass] = useState("");
+    const [SPass, changeSPass] = useState("");
+
     const [user, changeUser] = useState("");
     const [password, changePassword] = useState("");
    
@@ -32,12 +36,20 @@ import {
     const [isLoading, setLoading] = useState(false);
     const backend = "https://fp20.herokuapp.com"
     
-    const handleCodeChange = (event) => {
-      changeCode(event.target.value);
+    const handleTNameChange = (event) => {
+      changeTName(event.target.value);
     };
     
-    const handlePasswordChange = (event) => {
-      changePassword(event.target.value);
+    const handleTCodeChange = (event) => {
+      changeTcode(event.target.value);
+    };
+
+    const handleLPassChange = (event) => {
+      changeLPass(event.target.value);
+    };
+
+    const handleSPassChange = (event) => {
+      changeSPass(event.target.value);
     };
     
     const togglePasswordVisibility = () => {
@@ -88,43 +100,43 @@ import {
           </Typography>
           <form className="form">
             <TextInput
-              id="TC"
+              id="TName"
               label="Team Name"
               type="text"
               className="form-input"
               variant="outlined"
-              value={code}
-              onChange={handleCodeChange}
+              value={TName}
+              onChange={handleTNameChange}
             ></TextInput>
             <br/>
             <TextInput
-              id="TC"
+              id="TCode"
               label="Team Code"
               type="text"
               className="form-input"
               variant="outlined"
-              value={code}
-              onChange={handleCodeChange}
+              value={TCode}
+              onChange={handleTCodeChange}
             ></TextInput>
             <br/>
             <TextInput
-              id="TC"
+              id="LPass"
               label="Leader Password"
               type="text"
               className="form-input"
               variant="outlined"
-              value={code}
-              onChange={handleCodeChange}
+              value={LPass}
+              onChange={handleLPassChange}
             ></TextInput>
             <br/>
             <TextInput
-              id="password"
+              id="SPass"
               type={showPassword ? "text" : "password"}
               label="Spectator Password"
               className="form-input"
               variant="outlined"
-              value={password}
-              onChange={handlePasswordChange}
+              value={SPass}
+              onChange={handleSPassChange}
               onKeyPress={keyPress}
               InputProps={{
                 endAdornment: (
