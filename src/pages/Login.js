@@ -5,7 +5,7 @@ import {
   IconButton,
   CircularProgress,
 } from "@material-ui/core";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import TextInput from "../components/TextInput";
 import InfoContext from "../context/InfoContext";
@@ -24,8 +24,8 @@ function LoginPage() {
     "Error Logging In! Try again...."
   );
   const { setLoggedIn, setTeamCode, setAuthToken, setUserType } = useContext(
-		InfoContext
-	);
+    InfoContext
+  );
   const [isLoading, setLoading] = useState(false);
   const backend = process.env.REACT_APP_BACKEND_URL;
 
@@ -77,6 +77,13 @@ function LoginPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+		let loggedin = localStorage.getItem("authToken");
+		if (loggedin !== null) {
+			setSuccess(true);
+		}
+	})
 
   if (success) {
     return <Redirect to="/" />;
