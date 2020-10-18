@@ -1,8 +1,7 @@
 .scroll{
 	overflow:auto;
-	height:75vh;
+	height:calc(100vh - 260px);
 	text-align: center !important;
-
 }
 
 h1{

@@ -67,7 +67,7 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} className="scroll">
-        <Grid container spacing={3} alignItems="center">
+        <Grid container spacing={3} justify="center">
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
@@ -84,7 +84,7 @@ export default function SimpleTabs() {
            Marketing
         </Typography>
         <br />
-        <Grid container spacing={3} alignItems="center">
+        <Grid container spacing={3} justify="center">
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
@@ -94,7 +94,7 @@ export default function SimpleTabs() {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1} className="scroll">
-        <Grid container spacing={3} alignItems="center">
+        <Grid container spacing={3} justify="center">
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
@@ -111,7 +111,7 @@ export default function SimpleTabs() {
           Marketing
         </Typography>
         <br />
-        <Grid container spacing={3} alignItems="center">
+        <Grid container spacing={3} justify="center">
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
           <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
