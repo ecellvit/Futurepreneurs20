@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Amenities from './pages/Amenities';
 import ErrorPage from './pages/ErrorPage';
+import Campaign from "./pages/Campaign";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/amenities" component={Amenities} />
+          <Route exact path="/campaign" component={Campaign} />
           <Route path="*" component={ErrorPage} />
         </Switch>
       </Router>

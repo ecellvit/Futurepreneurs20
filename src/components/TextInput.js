@@ -17,7 +17,7 @@ const TextInput = withStyles({
 		"& .MuiOutlinedInput-root": {
 			"& fieldset": {
 				borderColor: "#dddddd",
-				borderRadius: "50px",
+				borderRadius: "25px",
 			},
 			"&:hover fieldset": {
 				borderColor: "#009C07",

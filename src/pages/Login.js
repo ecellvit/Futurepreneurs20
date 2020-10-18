@@ -96,8 +96,8 @@ function LoginPage() {
   }
 
   return (
-    <>
-      <Container className="page-container">
+    <div className="page-container">
+      <div className="inner-data">
         <Typography variant="h3" color="primary" className="login-head">
           LOGIN
         </Typography>
@@ -163,8 +163,8 @@ function LoginPage() {
               )}
           </ActionButton>
         </div>
-      </Container>
-    </>
+      </div>
+    </div>
   );
 }
 
