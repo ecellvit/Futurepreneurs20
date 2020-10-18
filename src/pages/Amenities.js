@@ -25,7 +25,7 @@ export default function Amenities() {
               className="input"
               variant="outlined" />
           </Grid>
-          <Grid item sm={8}>
+          <Grid item sm={8}> 
             <TextInput
               id="password"
               type={"text"}
