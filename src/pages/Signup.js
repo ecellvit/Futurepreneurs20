@@ -1,15 +1,12 @@
 import {
-  Container,
   Typography,
   InputAdornment,
   IconButton,
   CircularProgress,
 } from "@material-ui/core";
-import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import TextInput from "../components/TextInput";
-// import Navbar from "../components/Navbar/Navbar";
-import "./Login.css";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import ActionButton from "../components/ActionButton";
 import axios from "axios";
@@ -20,21 +17,11 @@ function LoginPage() {
   const [LPass, changeLPass] = useState("");
   const [SPass, changeSPass] = useState("");
   const [Message, setMessage] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
-  const [user, changeUser] = useState("");
-  const [password, changePassword] = useState("");
-
-  const [success, setSuccess] = useState(false);
   const [showPassword1, setShowPassword1] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
 
-  const [errorText, setErrorText] = useState(
-    "Error Logging In! Try again...."
-  );
-
-  const [redirect, setRedirect] = useState(false);
-  const [ownerRedirect, setOwnerRedirect] = useState(false);
-  const [loginRedirect, setLoginRedirect] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const backend = "https://fp20.herokuapp.com"
 
@@ -84,10 +71,9 @@ function LoginPage() {
         .then((res) => {
           console.log(res);
           console.log(res.status);
-          if (res.status == 200) {
+          if (res.status === 200) {
             setMessage(res.data.message);
             setLoading(false);
-            setSuccess(true);
           }
           else {
             setMessage(res.data.message);
@@ -96,10 +82,20 @@ function LoginPage() {
         });
     } catch (error) {
       console.log(error);
-      changePassword("");
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    let isAdmin = localStorage.getItem("userType");
+    if (isAdmin !== "A") {
+      setRedirect(true);
+    }
+  })
+
+  if(redirect) {
+    return <Redirect to="/" />
+  }
 
   return (
     <div className="page-container">

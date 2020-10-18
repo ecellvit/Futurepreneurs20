@@ -1,4 +1,4 @@
-import { Typography, Container, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 import ActionButton from './ActionButton';
@@ -21,24 +21,13 @@ export default function MenuBar() {
                 </Grid>
             );
         case "L":
+        case "S":
             return (
                 <Grid container spacing={2} className="menubar">
                     <Grid item>
                         <Link to="/amenities">
                             <ActionButton variant="contained" color="primary" disableElevation>
-                                Fill Amenities
-                            </ActionButton>
-                        </Link>
-                    </Grid>
-                </Grid>
-            )
-        case "S":
-            return (
-                <Grid container spacing={2} className="menubar">
-                    <Grid item>
-                        <Link to="/viewAmenities">
-                            <ActionButton variant="contained" color="primary" disableElevation>
-                                Check Amenities
+                                {userType==="L" ? "Fill Amenities" : "View Amenities"}
                             </ActionButton>
                         </Link>
                     </Grid>

@@ -1,12 +1,10 @@
 import {
-    Container,
     Typography,
     CircularProgress,
 } from "@material-ui/core";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import TextInput from "../components/TextInput";
-import InfoContext from "../context/InfoContext";
 import ActionButton from "../components/ActionButton";
 import axios from "axios";
 import ImageSelect from "../components/ImageSelect";
@@ -26,13 +24,9 @@ function Campaign() {
             src: "./assets/chair.jpg"
         },
     ]
-    const [errorText, setErrorText] = useState(
-        "Error Logging In! Try again...."
-    );
-    const { setLoggedIn, setTeamDesc, setAuthToken, setUserType } = useContext(
-        InfoContext
-    );
     const [isLoading, setLoading] = useState(false);
+    const [redirect, setRedirect] = useState(false);
+
     const backend = process.env.REACT_APP_BACKEND_URL;
 
     const handleDescChange = (event) => {
@@ -62,6 +56,17 @@ function Campaign() {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        let isLogged = localStorage.getItem("authToken");
+        if (isLogged === null) {
+          setRedirect(true);
+        }
+    })
+
+    if(redirect) {
+        return <Redirect to="/" />
+    }
 
     return (
         <div className="page-container">

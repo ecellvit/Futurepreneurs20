@@ -20,9 +20,6 @@ function LoginPage() {
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const [errorText, setErrorText] = useState(
-    "Error Logging In! Try again...."
-  );
   const { setLoggedIn, setTeamCode, setAuthToken, setUserType } = useContext(
     InfoContext
   );

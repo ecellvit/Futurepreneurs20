@@ -8,3 +8,15 @@
 h1{
 	width:100%;
 }
+
+.tabs .MuiTabs-fixed {
+	display: flex !important;
+	justify-content: center !important;
+}
+
+.tabs .MuiTabs-flexContainer {
+	width: 600px;
+	min-width: 70%;
+	display: flex;
+	justify-content: space-around;
+}
