@@ -2,8 +2,8 @@
     margin:5px;
 }
 .chip{
-    height:55px !important;
-    width:230px !important;
+    height:53px !important;
+    width:80% !important;
     font-size:1.1rem !important;
     font-weight: 500 !important;
     border-radius: 25px !important;
@@ -15,4 +15,25 @@
 	font-family: 'Inter', sans-serif !important;
 	color: #009C07 !important;
 	font-weight: 900 !important;
+}
+
+#no_of_economy, #no_of_premium {
+    text-align: center !important;
+    font-size: 1.35rem;
+    padding: 14px 12px !important;
+}
+
+.submit-btn {
+    border: 2px solid #000 !important;
+    background: #158000 !important;
+    width: 80% !important;
+    height: 53px !important;
+    font-size: 1.3rem !important;
+    border-radius: 25px !important;
+}
+
+.submit-btn:hover {
+    border: 2px solid #555 !important;
+    background: #009C07 !important;
+    color: #EEEEEE !important;
 }

@@ -42,7 +42,7 @@ function Navbar() {
 					<div className="nav-text"><div>FUTUREP<span>₹</span>ENEURS</div></div>
 				</Link>
 				<div className="nav-hello"><div>{teamCode}</div></div>
-				{isLoggedIn ? <ActionButton onClick={logout}>Log Out</ActionButton> : null}
+				{isLoggedIn ? <ActionButton onClick={logout} children="Log Out" /> : null}
 			</Toolbar>
 		</AppBar>
 	);

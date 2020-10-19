@@ -35,6 +35,7 @@ function Campaign() {
     };
 
     const handleSubmit = async () => {
+        setMessage("");
         const url = `${backend}/campaign/add`;
         setLoading(true);
         const data = {
@@ -51,18 +52,18 @@ function Campaign() {
                 })
                     .then((res) => {
                         console.log(res);
-                        if (res.status === 200) {
-                            setLoading(false);
+                        setMessage(res.data.message);
+                        if (res.status === 200) {    
+                            setRedirect(true);          
                         }
                     });
             } catch (error) {
                 console.log(error);
-                setLoading(false);
             }
         } else {
             setMessage("You are not authorised as Team Leader")
-            setLoading(false);
         }
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -106,8 +107,7 @@ function Campaign() {
                         className="login-btn"
                         onClick={handleSubmit}
                         disabled={isLoading ? true : false}
-                    >
-                        {!isLoading ? (
+                        children={!isLoading ? (
                             "Submit"
                         ) : (
                                 <CircularProgress
@@ -116,7 +116,7 @@ function Campaign() {
                                     thickness={5}
                                 />
                             )}
-                    </ActionButton>
+                    />
                 </div>
             </div>
         </div>

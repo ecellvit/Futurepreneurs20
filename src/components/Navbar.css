@@ -15,6 +15,12 @@
 	vertical-align: top;
 }
 
+@media screen and (max-width: 768px) {
+	.nav-text {
+		display: none;
+	}
+}
+
 .nav-text div {
 	height: 100%;
 	display: flex;

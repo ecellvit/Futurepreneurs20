@@ -71,19 +71,12 @@ function LoginPage() {
         .then((res) => {
           console.log(res);
           console.log(res.status);
-          if (res.status === 200) {
-            setMessage(res.data.message);
-            setLoading(false);
-          }
-          else {
-            setMessage(res.data.message);
-            setLoading(false);
-          }
+          setMessage(res.data.message);
         });
     } catch (error) {
       console.log(error);
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -93,7 +86,7 @@ function LoginPage() {
     }
   }, []);
 
-  if(redirect) {
+  if (redirect) {
     return <Redirect to="/" />
   }
 
@@ -190,8 +183,7 @@ function LoginPage() {
             className="login-btn"
             onClick={handleSubmit}
             disabled={isLoading ? true : false}
-          >
-            {!isLoading ? (
+            children={!isLoading ? (
               "signup"
             ) : (
                 <CircularProgress
@@ -199,8 +191,7 @@ function LoginPage() {
                   size={20}
                   thickness={5}
                 />
-              )}
-          </ActionButton>
+              )} />
         </div>
       </div>
     </div>

@@ -2,7 +2,9 @@
 	overflow:auto;
 	height:calc(100vh - 240px);
 	text-align: center !important;
-	border: 1px solid #009C07 !important;
+	border-bottom: 1px solid #009C07 !important;
+	border-left: 1px solid #009C07 !important;
+	border-right: 1px solid #009C07 !important;
 }
 
 .scroll::-webkit-scrollbar {
@@ -24,12 +26,22 @@ h1{
 }
 
 .tabs .MuiTabs-flexContainer {
-	width: 600px;
 	min-width: 70%;
+	max-width: 100% !important;
+	width: 600px;
 	display: flex;
 	justify-content: space-around;
 }
 
+@media screen and (max-width: 768px) {
+	.tabs .MuiTabs-flexContainer {
+		width: 100%;
+	}
+	.tabs .MuiTab-root {
+		padding: 6px !important;
+		font-size: 0.675rem !important;
+	}
+}
 
 .marketing {
     font-family: 'Inter', sans-serif !important;

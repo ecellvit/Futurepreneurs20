@@ -13,9 +13,7 @@ export default function MenuBar() {
                 <Grid container spacing={2} className="menubar">
                     <Grid item>
                         <Link to="/signup">
-                            <ActionButton variant="contained" color="primary" disableElevation>
-                                Register a Team
-                            </ActionButton>
+                            <ActionButton variant="contained" color="primary" disableElevation children="Register a Team" />
                         </Link>
                     </Grid>
                 </Grid>
@@ -26,9 +24,17 @@ export default function MenuBar() {
                 <Grid container spacing={2} className="menubar">
                     <Grid item>
                         <Link to="/amenities">
-                            <ActionButton variant="contained" color="primary" disableElevation>
-                                {userType==="L" ? "Fill Amenities" : "View Amenities"}
-                            </ActionButton>
+                            <ActionButton variant="contained" color="primary" disableElevation
+                                children={userType === "L" ? "Fill Amenities" : "View Amenities"}
+                            />
+                        </Link>
+                    </Grid>
+                    <Grid item>
+                        <Link to="/campaign">
+                            <ActionButton variant="contained" color="primary"
+                                children={userType === "L" ? "Fill Marketing Campaign" : "View Marketing Campaign"}
+                                disableElevation
+                            />
                         </Link>
                     </Grid>
                 </Grid>
@@ -38,9 +44,7 @@ export default function MenuBar() {
                 <Grid container spacing={2} className="menubar">
                     <Grid item>
                         <Link to="/login">
-                            <ActionButton variant="contained" color="primary" disableElevation>
-                                Login
-                            </ActionButton>
+                            <ActionButton variant="contained" color="primary" children="Login" disableElevation />
                         </Link>
                     </Grid>
                 </Grid>

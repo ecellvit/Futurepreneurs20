@@ -16,7 +16,7 @@ import axios from "axios";
 function LoginPage() {
   const [code, changeCode] = useState("");
   const [password, changePassword] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [redirect, setRedirect] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [Message, setMessage] = useState("");
 
@@ -64,30 +64,28 @@ function LoginPage() {
             localStorage.setItem("authToken", res.data.token);
             localStorage.setItem("userType", res.data.teamDetails.userType);
             localStorage.setItem("teamCode", res.data.teamDetails.code);
-            setLoading(false);
-            setSuccess(true);
+            setRedirect(true);
           }
           else {
             setMessage(res.data.message);
-            setLoading(false);
           }
         });
     }
     catch (error) {
       console.log(error);
       changePassword("");
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
     let loggedin = localStorage.getItem("authToken");
     if (loggedin !== null) {
-      setSuccess(true);
+      setRedirect(true);
     }
   }, []);
 
-  if (success) {
+  if (redirect) {
     return <Redirect to="/" />;
   }
 
@@ -147,8 +145,7 @@ function LoginPage() {
             className="login-btn"
             onClick={handleSubmit}
             disabled={isLoading ? true : false}
-          >
-            {!isLoading ? (
+            children={!isLoading ? (
               "LOGIN"
             ) : (
                 <CircularProgress
@@ -157,7 +154,7 @@ function LoginPage() {
                   thickness={5}
                 />
               )}
-          </ActionButton>
+          />
         </div>
       </div>
     </div>
