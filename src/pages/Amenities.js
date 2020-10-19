@@ -18,6 +18,8 @@ export default function Amenities() {
   const [numEconomy, setNumEconomy] = useState(3);
   const [selectedPremium, setPremium] = useState([]);
   const [selectedEconomy, setEconomy] = useState([]);
+  const [selectedPM, setSelectedPM] = useState(null);
+  const [selectedEM, setSelectedEM] = useState(null);
   const [pReason, setPReason] = useState("");
   const [eReason, setEReason] = useState("");
 
@@ -44,12 +46,21 @@ export default function Amenities() {
     console.log("Submit");
   }
 
+  const calcCost = () => {
+    const sum = 0;
+    for(x in selectedPremium) {}
+  }
+
   useEffect(() => {
     let isLogged = localStorage.getItem("authToken");
     if (isLogged === null) {
       setRedirect(true);
     }
   }, []);
+
+  useEffect(() => {
+    calcCost();
+  }, [numPremium, numEconomy, selectedEconomy, selectedPremium, selectedPM, selectedEM]);
 
   if (redirect) {
     return <Redirect to="/" />
@@ -148,7 +159,18 @@ export default function Amenities() {
             </Grid>
           </Grid>
           <Grid item container direction="column" spacing={2} xs={12} sm={6} md={8} lg={9}>
-            <Grid item sm={12}><SimpleTabs /></Grid>
+            <Grid item sm={12}>
+              <SimpleTabs
+                setSelectedPM={setSelectedPM}
+                selectedPremium={selectedPremium}
+                selectedEconomy={selectedEconomy}
+                setPremium={setPremium}
+                setEconomy={setEconomy}
+                selectedPM={selectedPM}
+                selectedEM={selectedEM}
+                setSelectedEM={setSelectedEM}
+              />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

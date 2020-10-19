@@ -9,6 +9,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import SimpleCard from './SimpleCard';
 import './SimpleTabs.css';
+import { PremiumAmenities, EconomyAmenities } from './Data'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,13 +51,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleTabs() {
+export default function SimpleTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const togglePremium = (pre) => {
+    const premium = props.selectedPremium;
+    if (premium.length <= 5) {
+      const index = premium.indexOf(pre);
+      if (index === -1 && premium.length !== 5)
+        premium.push(pre);
+      else if (index !== -1)
+        premium.splice(index, 1);
+      props.setPremium([...premium]);
+    }
+  }
+
+  const toggleEconomy = (pre) => {
+    const premium = props.selectedEconomy;
+    if (premium.length <= 5) {
+      const index = premium.indexOf(pre);
+      if (index === -1 && premium.length !== 5)
+        premium.push(pre);
+      else if (index !== -1)
+        premium.splice(index, 1);
+      props.setEconomy([...premium]);
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -68,20 +93,24 @@ export default function SimpleTabs() {
       </AppBar>
       <TabPanel value={value} index={0} className="scroll">
         <Grid container spacing={3} justify="center">
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          {PremiumAmenities.map(pre => (
+            <Grid item onClick={() => togglePremium(pre)} >
+              <SimpleCard
+                title={pre.title}
+                cost={pre.cost}
+                imageSource={pre.src}
+                style={
+                  {
+                    border: props.selectedPremium.indexOf(pre) !== -1
+                      ? "1px #009C07 solid" : null
+                  }
+                } />
+            </Grid>
+          ))}
         </Grid>
         <br />
         <Typography variant="h4" color="primary" className="marketing">
-           Marketing
+          Marketing
         </Typography>
         <br />
         <Grid container spacing={3} justify="center">
@@ -95,16 +124,20 @@ export default function SimpleTabs() {
       </TabPanel>
       <TabPanel value={value} index={1} className="scroll">
         <Grid container spacing={3} justify="center">
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          {EconomyAmenities.map(eco => (
+            <Grid item onClick={() => toggleEconomy(eco)} >
+              <SimpleCard
+                title={eco.title}
+                cost={eco.cost}
+                imageSource={eco.src}
+                style={
+                  {
+                    border: props.selectedEconomy.indexOf(eco) !== -1
+                      ? "1px #009C07 solid" : null
+                  }
+                } />
+            </Grid>
+          ))}
         </Grid>
         <br />
         <Typography variant="h4" color="primary" className="marketing">
