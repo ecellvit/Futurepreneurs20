@@ -1,20 +1,21 @@
-.login{
-    margin:5px;
+.login {
+    margin: 5px;
 }
-.chip{
-    height:53px !important;
-    width:80% !important;
-    font-size:1.1rem !important;
+
+.chip {
+    height: 53px !important;
+    width: 80% !important;
+    font-size: 1.1rem !important;
     font-weight: 500 !important;
     border-radius: 25px !important;
     color: #444444 !important;
     border-color: #009c07 !important;
-} 
+}
 
 .room-title {
-	font-family: 'Inter', sans-serif !important;
-	color: #009C07 !important;
-	font-weight: 900 !important;
+    font-family: 'Inter', sans-serif !important;
+    color: #009C07 !important;
+    font-weight: 900 !important;
 }
 
 #no_of_economy, #no_of_premium {
@@ -36,4 +37,9 @@
     border: 2px solid #555 !important;
     background: #009C07 !important;
     color: #EEEEEE !important;
+}
+
+.submit-message {
+    line-height: 1.2 !important;
+    font-size: 1.1rem !important;
 }
