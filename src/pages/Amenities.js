@@ -46,11 +46,6 @@ export default function Amenities() {
     console.log("Submit");
   }
 
-  const calcCost = () => {
-    const sum = 0;
-    for(x in selectedPremium) {}
-  }
-
   useEffect(() => {
     let isLogged = localStorage.getItem("authToken");
     if (isLogged === null) {
@@ -59,8 +54,30 @@ export default function Amenities() {
   }, []);
 
   useEffect(() => {
-    calcCost();
-  }, [numPremium, numEconomy, selectedEconomy, selectedPremium, selectedPM, selectedEM]);
+    let i, sum = 0;
+    for(i = 0; i < selectedPremium.length; i++) {
+      sum += selectedPremium[i].cost;
+    }
+    sum *= numPremium;
+    setPAcost(sum);
+  }, [numPremium, selectedPremium]);
+
+  useEffect(() => {
+    let i, sum = 0;
+    for(i = 0; i < selectedEconomy.length; i++) {
+      sum += selectedEconomy[i].cost;
+    }
+    sum *= numEconomy;
+    setEAcost(sum);
+  }, [numEconomy, selectedEconomy]);
+
+  useEffect(() => {
+    setEMcost(selectedEM.cost);
+  }, [selectedEM]);
+
+  useEffect(() => {
+    setEMcost(selectedPM.cost);
+  }, [selectedPM]);
 
   if (redirect) {
     return <Redirect to="/" />

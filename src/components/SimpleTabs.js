@@ -9,7 +9,10 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import SimpleCard from './SimpleCard';
 import './SimpleTabs.css';
-import { PremiumAmenities, EconomyAmenities } from './Data'
+import {
+  PremiumAmenities, EconomyAmenities,
+  PremiumMarketing, EconomyMarketing
+} from './Data'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -71,6 +74,14 @@ export default function SimpleTabs(props) {
     }
   }
 
+  const togglePremiumM = (pre) => {
+    props.setSelectedPM(pre);
+  }
+
+  const toggleEconomyM = (pre) => {
+    props.setSelectedEM(pre);
+  }
+
   const toggleEconomy = (pre) => {
     const premium = props.selectedEconomy;
     if (premium.length <= 5) {
@@ -114,12 +125,20 @@ export default function SimpleTabs(props) {
         </Typography>
         <br />
         <Grid container spacing={3} justify="center">
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          {PremiumMarketing.map(pre => (
+            <Grid item onClick={() => togglePremiumM(pre)} >
+              <SimpleCard
+                title={pre.title}
+                cost={pre.cost}
+                imageSource={pre.src}
+                style={
+                  {
+                    border: props.selectedPM === pre
+                      ? "1px #009C07 solid" : null
+                  }
+                } />
+            </Grid>
+          ))}
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1} className="scroll">
@@ -145,12 +164,20 @@ export default function SimpleTabs(props) {
         </Typography>
         <br />
         <Grid container spacing={3} justify="center">
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
-          <Grid item><SimpleCard title="Gaming Chair" cost="2000" imageSource="./assets/chair.jpg" /></Grid>
+          {EconomyMarketing.map(pre => (
+            <Grid item onClick={() => toggleEconomyM(pre)} >
+              <SimpleCard
+                title={pre.title}
+                cost={pre.cost}
+                imageSource={pre.src}
+                style={
+                  {
+                    border: props.selectedEM === pre
+                      ? "1px #009C07 solid" : null
+                  }
+                } />
+            </Grid>
+          ))}
         </Grid>
       </TabPanel>
     </div>
