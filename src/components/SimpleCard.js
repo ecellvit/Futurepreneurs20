@@ -1,36 +1,39 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, CardContent, Card } from '@material-ui/core';
+import './SimpleCard.css'
 
 const useStyles = makeStyles({
-  root: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  content: {
+    padding: 0
   },
   title: {
-    fontSize: 20,
+    display: 'block',
   },
   pos: {
     marginBottom: 12,
   },
+  img: {
+    objectFit: 'cover',
+    width: '100%',
+    height: 270
+  }
 });
 
 export default function SimpleCard(props) {
   const classes = useStyles();
   return (
-    <Card className={classes.root} style={props.style}>
-      <CardContent>
-        <Typography variant="h5" component="h2">
-          {props.title}
+    <Card className="card-item-fp" style={props.style}>
+      <CardContent className={classes.content}>
+        <img className={classes.img} src={props.imageSource} alt={props.title} />
+        <div className="img-overlay">
+          <Typography variant="h4" className={classes.title}>
+            {props.title}
+          </Typography>
+        </div>
+        <Typography variant="h3" className={classes.pos} >
+          ₹{props.cost}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          {props.cost}
-        </Typography>
-        <img src={props.imageSource} alt={props.title} />
       </CardContent>
     </Card>
   );

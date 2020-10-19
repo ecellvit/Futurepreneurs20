@@ -105,7 +105,7 @@ export default function SimpleTabs(props) {
       <TabPanel value={value} index={0} className="scroll">
         <Grid container spacing={3} justify="center">
           {PremiumAmenities.map(pre => (
-            <Grid item onClick={() => togglePremium(pre)} >
+            <Grid item xs={12} md={6} lg={4} xl={3} onClick={() => togglePremium(pre)} >
               <SimpleCard
                 title={pre.title}
                 cost={pre.cost}
@@ -113,7 +113,11 @@ export default function SimpleTabs(props) {
                 style={
                   {
                     border: props.selectedPremium.indexOf(pre) !== -1
-                      ? "1px #009C07 solid" : null
+                      ? "3px #009C07 solid" : "3px transparent solid",
+                    backgroundColor: props.selectedPremium.indexOf(pre) !== -1
+                      ? "#009C07" : "#FFFFFF",
+                    color:  props.selectedPremium.indexOf(pre) !== -1
+                    ? "#FFFFFF" : "#000000"
                   }
                 } />
             </Grid>
@@ -126,7 +130,7 @@ export default function SimpleTabs(props) {
         <br />
         <Grid container spacing={3} justify="center">
           {PremiumMarketing.map(pre => (
-            <Grid item onClick={() => togglePremiumM(pre)} >
+            <Grid item xs={12} md={6} lg={4} xl={3} onClick={() => togglePremiumM(pre)} >
               <SimpleCard
                 title={pre.title}
                 cost={pre.cost}
@@ -134,7 +138,11 @@ export default function SimpleTabs(props) {
                 style={
                   {
                     border: props.selectedPM === pre
-                      ? "1px #009C07 solid" : null
+                      ? "3px #009C07 solid" : "3px transparent solid",
+                    backgroundColor: props.selectedPM === pre
+                      ? "#009C07" : "#FFFFFF",
+                    color:  props.selectedPM === pre
+                    ? "#FFFFFF" : "#000000"
                   }
                 } />
             </Grid>
@@ -144,7 +152,7 @@ export default function SimpleTabs(props) {
       <TabPanel value={value} index={1} className="scroll">
         <Grid container spacing={3} justify="center">
           {EconomyAmenities.map(eco => (
-            <Grid item onClick={() => toggleEconomy(eco)} >
+            <Grid item xs={12} md={6} lg={4} xl={3} onClick={() => toggleEconomy(eco)} >
               <SimpleCard
                 title={eco.title}
                 cost={eco.cost}
@@ -152,7 +160,11 @@ export default function SimpleTabs(props) {
                 style={
                   {
                     border: props.selectedEconomy.indexOf(eco) !== -1
-                      ? "1px #009C07 solid" : null
+                      ? "3px #009C07 solid" : "3px transparent solid",
+                    backgroundColor: props.selectedEconomy.indexOf(eco) !== -1
+                      ? "#009C07" : "#FFFFFF",
+                    color:  props.selectedEconomy.indexOf(eco) !== -1
+                    ? "#FFFFFF" : "#000000"
                   }
                 } />
             </Grid>
@@ -165,7 +177,7 @@ export default function SimpleTabs(props) {
         <br />
         <Grid container spacing={3} justify="center">
           {EconomyMarketing.map(pre => (
-            <Grid item onClick={() => toggleEconomyM(pre)} >
+            <Grid item xs={12} md={6} lg={4} xl={3} onClick={() => toggleEconomyM(pre)} >
               <SimpleCard
                 title={pre.title}
                 cost={pre.cost}
@@ -173,7 +185,11 @@ export default function SimpleTabs(props) {
                 style={
                   {
                     border: props.selectedEM === pre
-                      ? "1px #009C07 solid" : null
+                      ? "3px #009C07 solid" : "3px transparent solid",
+                    backgroundColor: props.selectedEM === pre
+                      ? "#009C07" : "#FFFFFF",
+                    color:  props.selectedEM === pre
+                    ? "#FFFFFF" : "#000000"
                   }
                 } />
             </Grid>

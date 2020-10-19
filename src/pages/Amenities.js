@@ -128,7 +128,7 @@ export default function Amenities() {
 
   useEffect(() => {
     setTotalCost((cpr_P * numPremium) + (cpr_E * numEconomy));
-  }, [cpr_E,cpr_P,numEconomy,numPremium]);
+  }, [cpr_E, cpr_P, numEconomy, numPremium]);
 
   useEffect(() => {
     setP(PAcost + PMcost + 3200 + (6000 / numPremium));
@@ -169,7 +169,7 @@ export default function Amenities() {
             />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <Chip color="primary" label={`Total Cost:${totalCost.toFixed(2)}`} variant="outlined" className="chip" />
+            <Chip color="primary" label={`Total Cost: ₹${totalCost.toFixed(2)}`} variant="outlined" className="chip" />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <ActionButton
@@ -189,7 +189,7 @@ export default function Amenities() {
           </Grid>
         </Grid>
         <Grid item container xs={12} >
-          <Grid item container direction="column" xs={12} sm={6} md={4} lg={3} >
+          <Grid item container xs={12} sm={6} md={4} lg={3} justify="center" >
             <Grid item xs={12}>
               <Typography variant="h5" color="primary" className="room-title">
                 Premium Room
@@ -198,16 +198,15 @@ export default function Amenities() {
             <br />
             <Grid item container xs={12} spacing={2} justify="center">
               <Grid item >
-                <Chip color="primary" label={`Amenities Cost:${PAcost.toFixed(2)}`} variant="outlined" className="chip" />
+                <Chip color="primary" label={`Amenities Cost: ₹${PAcost.toFixed(2)}`} variant="outlined" className="chip" />
               </Grid>
-
               <Grid item>
-                <Chip color="primary" label={`Marketing Cost:${PMcost.toFixed(2)}`} variant="outlined" className="chip" />
+                <Chip color="primary" label={`Marketing Cost: ₹${PMcost.toFixed(2)}`} variant="outlined" className="chip" />
               </Grid>
             </Grid>
             <br />
             <Grid item >
-              <Chip color="primary" label={`Cost per room:${cpr_P.toFixed(2)}`} variant="outlined" className="chip" />
+              <Chip color="primary" label={`Cost per room: ₹${cpr_P.toFixed(2)}`} variant="outlined" className="chip" />
             </Grid>
             <br />
             <Grid item>
@@ -231,16 +230,15 @@ export default function Amenities() {
             <br />
             <Grid item container xs={12} spacing={2} justify="center">
               <Grid item >
-                <Chip color="primary" label={`Amenities Cost:${EAcost.toFixed(2)}`} variant="outlined" className="chip" />
+                <Chip color="primary" label={`Amenities Cost: ₹${EAcost.toFixed(2)}`} variant="outlined" className="chip" />
               </Grid>
-
               <Grid item>
-                <Chip color="primary" label={`Marketing Cost:${EMcost.toFixed(2)}`} variant="outlined" className="chip" />
+                <Chip color="primary" label={`Marketing Cost: ₹${EMcost.toFixed(2)}`} variant="outlined" className="chip" />
               </Grid>
             </Grid>
             <br />
             <Grid item>
-              <Chip color="primary" label={`Cost per room:${cpr_E.toFixed(2)}`} variant="outlined" className="chip" />
+              <Chip color="primary" label={`Cost per room: ₹${cpr_E.toFixed(2)}`} variant="outlined" className="chip" />
             </Grid>
             <br />
             <Grid item>
