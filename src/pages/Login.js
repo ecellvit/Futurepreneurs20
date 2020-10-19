@@ -85,7 +85,7 @@ function LoginPage() {
     if (loggedin !== null) {
       setSuccess(true);
     }
-  })
+  }, []);
 
   if (success) {
     return <Redirect to="/" />;

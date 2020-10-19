@@ -36,7 +36,7 @@ export default function SimpleCard(props) {
         <Typography className={classes.pos} color="textSecondary">
           {props.cost}
         </Typography>
-        <img src={props.imageSource} />
+        <img src={props.imageSource} alt={props.title} />
       </CardContent>
       <CardActions>
         <ToggleButton

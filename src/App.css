@@ -38,7 +38,7 @@
 }
 
 .page-container {
-  height: calc(100vh - 84px);
+  height: calc(100vh - 94px);
   padding: 5px;
   text-align: center;
   margin: auto;
@@ -48,7 +48,7 @@
 }
 
 .amenities-page-container {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 94px);
   padding: 5px;
   text-align: center;
   margin: auto;

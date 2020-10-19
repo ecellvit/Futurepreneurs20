@@ -70,7 +70,7 @@ function Campaign() {
         if (isLogged === null) {
             setRedirect(true);
         }
-    })
+    }, []);
 
     if (redirect) {
         return <Redirect to="/" />

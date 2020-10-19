@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-import { Grid, Typography, Chip, Button } from '@material-ui/core';
+import { Grid, Typography, Chip } from '@material-ui/core';
 import SimpleTabs from '../components/SimpleTabs';
-import BasicTextFields from '../components/form';
 import TextInput from "../components/TextInput";
 import './Amenities.css';
 
@@ -20,7 +19,7 @@ export default function Amenities() {
     if (isLogged === null) {
       setRedirect(true);
     }
-  })
+  }, []);
 
   if (redirect) {
     return <Redirect to="/" />

@@ -91,7 +91,7 @@ function LoginPage() {
     if (isAdmin !== "A") {
       setRedirect(true);
     }
-  })
+  }, []);
 
   if(redirect) {
     return <Redirect to="/" />
