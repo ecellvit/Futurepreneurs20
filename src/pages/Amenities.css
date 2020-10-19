@@ -4,7 +4,7 @@
 
 .chip {
     height: 53px !important;
-    width: 80% !important;
+    min-width: 60% !important;
     font-size: 1.1rem !important;
     font-weight: 500 !important;
     border-radius: 25px !important;
