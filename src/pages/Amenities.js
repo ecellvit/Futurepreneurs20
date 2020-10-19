@@ -105,18 +105,16 @@ export default function Amenities() {
     for (i = 0; i < selectedPremium.length; i++) {
       sum += selectedPremium[i].cost;
     }
-    sum *= numPremium;
     setPAcost(sum);
-  }, [numPremium, selectedPremium]);
+  }, [selectedPremium]);
 
   useEffect(() => {
     let i, sum = 0;
     for (i = 0; i < selectedEconomy.length; i++) {
       sum += selectedEconomy[i].cost;
     }
-    sum *= numEconomy;
     setEAcost(sum);
-  }, [numEconomy, selectedEconomy]);
+  }, [selectedEconomy]);
 
   useEffect(() => {
     if (selectedEM !== null)
@@ -129,8 +127,16 @@ export default function Amenities() {
   }, [numPremium, selectedPM]);
 
   useEffect(() => {
-    setTotalCost((PMcost + PAcost + EMcost + EAcost));
-  }, [PMcost, PAcost, EMcost, EAcost]);
+    setTotalCost((cpr_P * numPremium) + (cpr_E * numEconomy));
+  }, [cpr_E,cpr_P,numEconomy,numPremium]);
+
+  useEffect(() => {
+    setP(PAcost + PMcost + 3200 + (6000 / numPremium));
+  }, [PAcost, PMcost, numPremium]);
+
+  useEffect(() => {
+    setE(EAcost + EMcost + 3200 + (6000 / numEconomy));
+  }, [EAcost, EMcost, numEconomy]);
 
   if (redirect) {
     return <Redirect to="/" />
@@ -182,19 +188,26 @@ export default function Amenities() {
             <Typography variant="h6" color="secondary" className="submit-message">{Message}</Typography>
           </Grid>
         </Grid>
-        <Grid item container xs={12}>
+        <Grid item container xs={12} >
           <Grid item container direction="column" xs={12} sm={6} md={4} lg={3} >
-            <br />
-            <Typography variant="h5" color="primary" className="room-title">
-              Premium Room
+            <Grid item xs={12}>
+              <Typography variant="h5" color="primary" className="room-title">
+                Premium Room
             </Typography>
-            <br />
-            <Grid item>
-              <Chip color="primary" label={`Amenities Cost:${PAcost.toFixed(2)}`} variant="outlined" className="chip" />
             </Grid>
             <br />
-            <Grid item>
-              <Chip color="primary" label={`Marketing Cost:${PMcost.toFixed(2)}`} variant="outlined" className="chip" />
+            <Grid item container xs={12} spacing={2} justify="center">
+              <Grid item >
+                <Chip color="primary" label={`Amenities Cost:${PAcost.toFixed(2)}`} variant="outlined" className="chip" />
+              </Grid>
+
+              <Grid item>
+                <Chip color="primary" label={`Marketing Cost:${PMcost.toFixed(2)}`} variant="outlined" className="chip" />
+              </Grid>
+            </Grid>
+            <br />
+            <Grid item >
+              <Chip color="primary" label={`Cost per room:${cpr_P.toFixed(2)}`} variant="outlined" className="chip" />
             </Grid>
             <br />
             <Grid item>
@@ -212,17 +225,22 @@ export default function Amenities() {
               />
             </Grid>
             <br />
-            <br />
             <Typography variant="h5" color="primary" className="login-head">
               Economy Room
             </Typography>
             <br />
-            <Grid item>
-              <Chip color="primary" label={`Amenities Cost:${EAcost.toFixed(2)}`} variant="outlined" className="chip" />
+            <Grid item container xs={12} spacing={2} justify="center">
+              <Grid item >
+                <Chip color="primary" label={`Amenities Cost:${EAcost.toFixed(2)}`} variant="outlined" className="chip" />
+              </Grid>
+
+              <Grid item>
+                <Chip color="primary" label={`Marketing Cost:${EMcost.toFixed(2)}`} variant="outlined" className="chip" />
+              </Grid>
             </Grid>
             <br />
             <Grid item>
-              <Chip color="primary" label={`Marketing Cost:${EMcost.toFixed(2)}`} variant="outlined" className="chip" />
+              <Chip color="primary" label={`Cost per room:${cpr_E.toFixed(2)}`} variant="outlined" className="chip" />
             </Grid>
             <br />
             <Grid item>
