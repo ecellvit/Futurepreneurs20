@@ -11,7 +11,7 @@ import SimpleCard from './SimpleCard';
 import './SimpleTabs.css';
 import {
   PremiumAmenities, EconomyAmenities,
-  PremiumMarketing, EconomyMarketing
+  Marketing,
 } from './Data'
 
 function TabPanel(props) {
@@ -129,7 +129,7 @@ export default function SimpleTabs(props) {
         </Typography>
         <br />
         <Grid container spacing={3} justify="center">
-          {PremiumMarketing.map(pre => (
+          {Marketing.map(pre => (
             <Grid item xs={12} md={6} lg={4} xl={3} onClick={() => togglePremiumM(pre)} >
               <SimpleCard
                 title={pre.title}
@@ -176,7 +176,7 @@ export default function SimpleTabs(props) {
         </Typography>
         <br />
         <Grid container spacing={3} justify="center">
-          {EconomyMarketing.map(pre => (
+          {Marketing.map(pre => (
             <Grid item xs={12} md={6} lg={4} xl={3} onClick={() => toggleEconomyM(pre)} >
               <SimpleCard
                 title={pre.title}

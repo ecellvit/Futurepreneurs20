@@ -53,121 +53,88 @@ const PremiumAmenities = [
 
 const EconomyAmenities = [
     {
-        title: "Chair",
-        cost: 300,
-        src: "./assets/chair.jpg"
+        title: "LCD TV",
+        cost: 1250,
+        src: "./assets/tv.jpg"
     },
     {
-        title: "Chair2",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Laundry Service",
+        cost: 315,
+        src: "./assets/laundry.jpg"
     },
     {
-        title: "Chair3",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Microwave and Mini Fridge",
+        cost: 1050,
+        src: "./assets/microwave.jpg"
     },
     {
-        title: "Chair4",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Music Player and Firestick",
+        cost: 850,
+        src: "./assets/music.jpg"
     },
     {
-        title: "Chair5",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Kid play area and Mini Arcade",
+        cost: 2000,
+        src: "./assets/arcade.jpg"
     },
     {
-        title: "Chair6",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Kettle",
+        cost: 650,
+        src: "./assets/kettle.jpg"
     },
     {
-        title: "Chair7",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Stationary",
+        cost: 160,
+        src: "./assets/stationary.png"
     },
     {
-        title: "Chair8",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Bedside Table with Drawers",
+        cost: 1750,
+        src: "./assets/bedside-table.jpg"
     },
     {
-        title: "Chair9",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Bathrobe",
+        cost: 250,
+        src: "./assets/bathrobe.jpg"
     },
     {
-        title: "Chair10",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Desk and Chair",
+        cost: 1850,
+        src: "./assets/desk.jpg"
     }
 ]
 
-const PremiumMarketing = [
+const Marketing = [
     {
-        title: "Chair",
-        cost: 300,
-        src: "./assets/chair.jpg"
+        title: "Travel Websites",
+        cost: 2200,
+        src: "./assets/website.png"
     },
     {
-        title: "Chair2",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Newspaper Advertisements",
+        cost: 2750,
+        src: "./assets/news.jpg"
     },
     {
-        title: "Chair3",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Social Media Advertising",
+        cost: 1850,
+        src: "./assets/social.png"
     },
     {
-        title: "Chair4",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "TV Advertisemnets",
+        cost: 3000,
+        src: "./assets/tv-ads.png"
     },
     {
-        title: "Chair5",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Brochures and Pamphlets",
+        cost: 2000,
+        src: "./assets/brochure.jpg"
     },
     {
-        title: "Chair6",
-        cost: 200,
-        src: "./assets/chair.jpg"
+        title: "Location Based Advertising",
+        cost: 1050,
+        src: "./assets/location.jpg"
     }
 ]
 
-const EconomyMarketing = [
-    {
-        title: "Chair",
-        cost: 300,
-        src: "./assets/chair.jpg"
-    },
-    {
-        title: "Chair2",
-        cost: 200,
-        src: "./assets/chair.jpg"
-    },
-    {
-        title: "Chair3",
-        cost: 200,
-        src: "./assets/chair.jpg"
-    },
-    {
-        title: "Chair4",
-        cost: 200,
-        src: "./assets/chair.jpg"
-    },
-    {
-        title: "Chair5",
-        cost: 200,
-        src: "./assets/chair.jpg"
-    },
-    {
-        title: "Chair6",
-        cost: 200,
-        src: "./assets/chair.jpg"
-    }
-]
-
-export { PremiumAmenities, EconomyAmenities, PremiumMarketing, EconomyMarketing }
+export { PremiumAmenities, EconomyAmenities, Marketing }
