@@ -16,6 +16,11 @@ export default function MenuBar() {
                             <ActionButton variant="contained" color="primary" disableElevation children="Register a Team" />
                         </Link>
                     </Grid>
+                    <Grid item>
+                        <Link to="/notSubmit">
+                            <ActionButton variant="contained" color="primary" disableElevation children="Check who hasn't submitted" />
+                        </Link>
+                    </Grid>
                 </Grid>
             );
         case "L":

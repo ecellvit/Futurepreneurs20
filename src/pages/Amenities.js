@@ -149,7 +149,7 @@ export default function Amenities() {
   }, [PAcost, PMcost, numPremium]);
 
   useEffect(() => {
-    setE(EAcost + EMcost + 3200 + (6000 / numEconomy));
+    setE(EAcost + EMcost + 1700 + (9000 / numEconomy));
   }, [EAcost, EMcost, numEconomy]);
 
   if (redirect) {
@@ -175,7 +175,7 @@ export default function Amenities() {
             <TextInput
               id="no_of_economy"
               type="number"
-              label="Number of Economy Rooms"
+              label="Number of Standard Rooms"
               className="input"
               value={numEconomy}
               onChange={handlenumEconomyChange}
@@ -239,7 +239,7 @@ export default function Amenities() {
             </Grid>
             <br />
             <Typography variant="h5" color="primary" className="login-head">
-              Economy Room
+              Standard Room
             </Typography>
             <br />
             <Grid item container xs={12} spacing={2} justify="center">

@@ -10,6 +10,8 @@ import Amenities from './pages/Amenities';
 import ErrorPage from './pages/ErrorPage';
 import Campaign from "./pages/Campaign";
 import ViewSub from "./pages/viewSubmission";
+import NotSub from "./pages/NotSubmit";
+
 
 
 function App() {
@@ -40,6 +42,7 @@ function App() {
           <Route exact path="/amenities" component={Amenities} />
           <Route exact path="/campaign" component={Campaign} />
           <Route exact path="/submission" component={ViewSub} />
+          <Route exact path="/notSubmit" component={NotSub} />
           <Route path="*" component={ErrorPage} />
         </Switch>
       </Router>

@@ -126,7 +126,7 @@ function ViewSub() {
                                     </List>
                                 </Grid>
                                 <Grid item xs={12} md={6} justify="center">
-                                    <Typography variant="h5" >Economy Rooms (Cost per Room: {amenitiesEconomy.cpr === null ? 0 : amenitiesEconomy.cpr})</Typography>
+                                    <Typography variant="h5" >Standard Rooms (Cost per Room: {amenitiesEconomy.cpr === null ? 0 : amenitiesEconomy.cpr})</Typography>
                                     <Typography variant="h6" >Number of Room: {amenitiesEconomy.number === null ? 0 : amenitiesEconomy.number}</Typography>
                                     <List subheader={<ListSubheader>Amenities</ListSubheader>}>
                                         {(amenitiesEconomy.amenities).map((amen) => <ListItem>
