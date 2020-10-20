@@ -80,3 +80,7 @@ a {
   font-weight:600 !important;
 }
 
+.MuiList-root {
+  width: fit-content !important;
+  margin: auto !important;
+}

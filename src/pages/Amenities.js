@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import InfoContext from "../context/InfoContext";
 import { Redirect } from "react-router-dom";
 import { Grid, Typography, Chip, CircularProgress } from '@material-ui/core';
 import SimpleTabs from '../components/SimpleTabs';
@@ -27,6 +28,10 @@ export default function Amenities() {
   const [eReason, setEReason] = useState("");
   const [cpr_P, setP] = useState(0);
   const [cpr_E, setE] = useState(0);
+
+  const { isLoggedIn } = useContext(
+    InfoContext
+  );
 
   const handlenumPremiumChange = (event) => {
     if (event.target.value <= 4 && event.target.value >= 2)
@@ -67,14 +72,14 @@ export default function Amenities() {
           marketing: selectedPM,
           number: numPremium,
           reason: pReason,
-          cpr: cpr_P
+          cpr: cpr_P.toFixed(2)
         },
         standard: {
           amenities: selectedEconomy,
           marketing: selectedEM,
           number: numEconomy,
           reason: eReason,
-          cpr: cpr_E
+          cpr: cpr_E.toFixed(2)
         },
         totalCost
       };
@@ -104,11 +109,10 @@ export default function Amenities() {
   }
 
   useEffect(() => {
-    let isLogged = localStorage.getItem("authToken");
-    if (isLogged === null) {
+    if (!isLoggedIn) {
       setRedirect(true);
     }
-  }, []);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     let i, sum = 0;

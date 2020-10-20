@@ -13,14 +13,14 @@ import { Visibility, VisibilityOff } from "@material-ui/icons";
 import ActionButton from "../components/ActionButton";
 import axios from "axios";
 
-function LoginPage() {
+function Login() {
   const [code, changeCode] = useState("");
   const [password, changePassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [Message, setMessage] = useState("");
 
-  const { setLoggedIn, setTeamCode, setAuthToken, setUserType } = useContext(
+  const { isLoggedIn, setLoggedIn, setTeamCode, setAuthToken, setUserType } = useContext(
     InfoContext
   );
   const [isLoading, setLoading] = useState(false);
@@ -79,11 +79,10 @@ function LoginPage() {
   };
 
   useEffect(() => {
-    let loggedin = localStorage.getItem("authToken");
-    if (loggedin !== null) {
+    if (isLoggedIn) {
       setRedirect(true);
     }
-  }, []);
+  }, [isLoggedIn]);
 
   if (redirect) {
     return <Redirect to="/" />;
@@ -161,4 +160,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default Login;

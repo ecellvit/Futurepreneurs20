@@ -2,7 +2,8 @@ import {
     Typography,
     CircularProgress,
 } from "@material-ui/core";
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import InfoContext from "../context/InfoContext";
 import { Redirect } from "react-router-dom";
 import TextInput from "../components/TextInput";
 import ActionButton from "../components/ActionButton";
@@ -30,6 +31,11 @@ function Campaign() {
         },
 
     ]
+
+    const { isLoggedIn } = useContext(
+        InfoContext
+      );
+
     const [isLoading, setLoading] = useState(false);
     const [redirect, setRedirect] = useState(false);
 
@@ -55,7 +61,7 @@ function Campaign() {
             const data = {
                 description: desc,
                 tagline: tag,
-                teamName: HotelName,
+                hotelName: HotelName,
                 imageUrl: images[image].src
             };
             console.log(url, data);
@@ -84,11 +90,10 @@ function Campaign() {
     };
 
     useEffect(() => {
-        let isLogged = localStorage.getItem("authToken");
-        if (isLogged === null) {
-            setRedirect(true);
+        if (!isLoggedIn) {
+          setRedirect(true);
         }
-    }, []);
+      }, [isLoggedIn]);
 
     if (redirect) {
         return <Redirect to="/" />

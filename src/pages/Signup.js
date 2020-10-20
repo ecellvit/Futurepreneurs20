@@ -4,14 +4,15 @@ import {
   IconButton,
   CircularProgress,
 } from "@material-ui/core";
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import InfoContext from "../context/InfoContext";
 import { Redirect } from "react-router-dom";
 import TextInput from "../components/TextInput";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import ActionButton from "../components/ActionButton";
 import axios from "axios";
 
-function LoginPage() {
+function SignUp() {
   const [TCode, changeTCode] = useState("");
   const [TName, changeTName] = useState("");
   const [LPass, changeLPass] = useState("");
@@ -21,6 +22,10 @@ function LoginPage() {
 
   const [showPassword1, setShowPassword1] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
+
+  const { isLoggedIn } = useContext(
+    InfoContext
+  );
 
   const [isLoading, setLoading] = useState(false);
   const backend = process.env.REACT_APP_BACKEND_URL
@@ -84,7 +89,7 @@ function LoginPage() {
     if (isAdmin !== "A") {
       setRedirect(true);
     }
-  }, []);
+  }, [isLoggedIn]);
 
   if (redirect) {
     return <Redirect to="/" />
@@ -198,4 +203,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default SignUp;

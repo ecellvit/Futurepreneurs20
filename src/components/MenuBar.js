@@ -37,6 +37,14 @@ export default function MenuBar() {
                             />
                         </Link>
                     </Grid>
+                    <Grid item>
+                        <Link to="/submission">
+                            <ActionButton variant="contained" color="primary"
+                                children="View Submissions"
+                                disableElevation
+                            />
+                        </Link>
+                    </Grid>
                 </Grid>
             )
         default:
