@@ -2,7 +2,7 @@ const PremiumAmenities = [
     {
         title: "High Speed Wifi",
         cost: 1650,
-        src: "./assets/wifi.png"
+        src: "./assets/wifi.jpg"
     },
     {
         title: "Cab Service",
