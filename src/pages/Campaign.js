@@ -11,19 +11,24 @@ import ImageSelect from "../components/ImageSelect";
 
 function Campaign() {
     const [desc, changeDesc] = useState("");
+    const [tag, changeTag] = useState("");
+    const [HotelName, changeHotelName] = useState("");
     const [image, setImage] = useState(0);
     const [Message, setMessage] = useState("");
     const images = [
         {
             key: 0,
-            name: "Chair",
-            src: "./assets/chair.jpg"
+            src: "./assets/hotel1.jpg"
         },
         {
             key: 1,
-            name: "Chair",
-            src: "./assets/chair.jpg"
+            src: "./assets/hotel4.jpg"
         },
+        {
+            key: 2,
+            src: "./assets/hotel3.jpg"
+        },
+
     ]
     const [isLoading, setLoading] = useState(false);
     const [redirect, setRedirect] = useState(false);
@@ -32,6 +37,12 @@ function Campaign() {
 
     const handleDescChange = (event) => {
         changeDesc(event.target.value);
+    };
+    const handleChangeTag = (event) => {
+        changeTag(event.target.value);
+    };
+    const handleChangeHotelName = (event) => {
+        changeHotelName(event.target.value);
     };
 
     const handleSubmit = async () => {
@@ -43,6 +54,8 @@ function Campaign() {
         } else {
             const data = {
                 description: desc,
+                tagline: tag,
+                teamName: HotelName,
                 imageUrl: images[image].src
             };
             console.log(url, data);
@@ -87,8 +100,33 @@ function Campaign() {
                 <Typography variant="h3" color="primary" className="login-head">
                     Market Your Hotel Room
                 </Typography>
+                <br />
                 <ImageSelect images={images} selected={image} setSelected={setImage} />
                 <form className="form">
+                    <TextInput
+                        id="HotelName"
+                        label="Hotel Name"
+                        type="text"
+                        className="form-input"
+                        variant="outlined"
+                        multiline
+                        rows={1}
+                        value={HotelName}
+                        onChange={handleChangeHotelName}
+                    />
+                    <br />
+                    <TextInput
+                        id="tagline"
+                        label="Tagline"
+                        type="text"
+                        className="form-input"
+                        variant="outlined"
+                        multiline
+                        rows={1}
+                        value={tag}
+                        onChange={handleChangeTag}
+                    />
+                    <br />
                     <TextInput
                         id="desc"
                         label="Description"
@@ -105,7 +143,7 @@ function Campaign() {
                 <Typography variant="h5" color="secondary">
                     {Message}
                 </Typography>
-                <br />
+                
                 <div className="login-btn-div">
                     <ActionButton
                         className="login-btn"
