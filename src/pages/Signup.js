@@ -23,7 +23,7 @@ function LoginPage() {
   const [showPassword2, setShowPassword2] = useState(false);
 
   const [isLoading, setLoading] = useState(false);
-  const backend = "https://fp20.herokuapp.com"
+  const backend = process.env.REACT_APP_BACKEND_URL
 
   const handleTNameChange = (event) => {
     changeTName(event.target.value);

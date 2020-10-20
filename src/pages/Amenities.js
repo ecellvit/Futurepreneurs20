@@ -52,43 +52,53 @@ export default function Amenities() {
     setMessage("");
     const url = `${backend}/amenities/add`;
     setLoading(true);
-    const data = {
-      premium: {
-        amenities: selectedPremium,
-        marketing: selectedPM,
-        number: numPremium,
-        reason: pReason,
-        cpr: cpr_P
-      },
-      economy: {
-        amenities: selectedEconomy,
-        marketing: selectedEM,
-        number: numEconomy,
-        reason: eReason,
-        cpr: cpr_E
-      },
-      totalCost
-    };
-    console.log(url, data);
-    if (localStorage.getItem("userType") === "L") {
-      try {
-        await axios.post(url, data, {
-          headers: {
-            "auth-token": localStorage.getItem("authToken")
-          }
-        })
-          .then((res) => {
-            console.log(res);
-            setMessage(res.data.message);
-            if (res.status === 200) {
-              setRedirect(true);
-            }
-          });
-      } catch (error) {
-        console.log(error);
-      }
+    if (selectedEconomy.length < 5 || selectedPremium.length < 5) {
+      setMessage("Select 5 amenities for each type of room");
+    } else if (pReason.trim() === "" || eReason.trim() === "") {
+      setMessage("Please give us the reasons for your choice of amenities");
+    } else if (selectedPM === null || selectedEM === null) {
+      setMessage("Select one marketing element for each type of room");
+    } else if (totalCost > 100000) {
+      setMessage("Total Cost cannot exceed ₹100000");
     } else {
-      setMessage("You are not authorised as Team Leader")
+      const data = {
+        premium: {
+          amenities: selectedPremium,
+          marketing: selectedPM,
+          number: numPremium,
+          reason: pReason,
+          cpr: cpr_P
+        },
+        standard: {
+          amenities: selectedEconomy,
+          marketing: selectedEM,
+          number: numEconomy,
+          reason: eReason,
+          cpr: cpr_E
+        },
+        totalCost
+      };
+      console.log(url, data);
+      if (localStorage.getItem("userType") === "L") {
+        try {
+          await axios.post(url, data, {
+            headers: {
+              "auth-token": localStorage.getItem("authToken")
+            }
+          })
+            .then((res) => {
+              console.log(res);
+              setMessage(res.data.message);
+              if (res.status === 200) {
+                setRedirect(true);
+              }
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        setMessage("You are not authorised as Team Leader")
+      }
     }
     setLoading(false);
   }

@@ -38,30 +38,34 @@ function Campaign() {
         setMessage("");
         const url = `${backend}/campaign/add`;
         setLoading(true);
-        const data = {
-            description: desc,
-            imageURL: images[image].src
-        };
-        console.log(url, data);
-        if (localStorage.getItem("userType") === "L") {
-            try {
-                await axios.post(url, data, {
-                    headers: {
-                        "auth-token": localStorage.getItem("authToken")
-                    }
-                })
-                    .then((res) => {
-                        console.log(res);
-                        setMessage(res.data.message);
-                        if (res.status === 200) {    
-                            setRedirect(true);          
-                        }
-                    });
-            } catch (error) {
-                console.log(error);
-            }
+        if (desc.trim() === "") {
+            setMessage("Please add description to your Advertisement")
         } else {
-            setMessage("You are not authorised as Team Leader")
+            const data = {
+                description: desc,
+                imageUrl: images[image].src
+            };
+            console.log(url, data);
+            if (localStorage.getItem("userType") === "L") {
+                try {
+                    await axios.post(url, data, {
+                        headers: {
+                            "auth-token": localStorage.getItem("authToken")
+                        }
+                    })
+                        .then((res) => {
+                            console.log(res);
+                            setMessage(res.data.message);
+                            if (res.status === 200) {
+                                setRedirect(true);
+                            }
+                        });
+                } catch (error) {
+                    console.log(error);
+                }
+            } else {
+                setMessage("You are not authorised as Team Leader")
+            }
         }
         setLoading(false);
     };
