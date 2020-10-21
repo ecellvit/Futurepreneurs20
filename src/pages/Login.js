@@ -79,7 +79,7 @@ function Login() {
   };
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (localStorage.getItem('authToken') !== null) {
       setRedirect(true);
     }
   }, [isLoggedIn]);

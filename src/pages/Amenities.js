@@ -109,7 +109,7 @@ export default function Amenities() {
   }
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (localStorage.getItem('authToken')===null) {
       setRedirect(true);
     }
   }, [isLoggedIn]);
@@ -145,12 +145,18 @@ export default function Amenities() {
   }, [cpr_E, cpr_P, numEconomy, numPremium]);
 
   useEffect(() => {
-    setP(PAcost + PMcost + 3200 + (6000 / numPremium));
-  }, [PAcost, PMcost, numPremium]);
+    if (selectedPM !== null || selectedPremium.length !== 0)
+      setP(PAcost + PMcost + 3200 + (6000 / numPremium));
+    else
+      setP(0);
+  }, [PAcost, PMcost, numPremium, selectedPM, selectedPremium]);
 
   useEffect(() => {
-    setE(EAcost + EMcost + 1700 + (9000 / numEconomy));
-  }, [EAcost, EMcost, numEconomy]);
+    if (selectedEM !== null || selectedEconomy.length !== 0)
+      setE(EAcost + EMcost + 1700 + (9000 / numEconomy));
+    else
+      setE(0);
+  }, [EAcost, EMcost, numEconomy, selectedEM, selectedEconomy]);
 
   if (redirect) {
     return <Redirect to="/" />
@@ -207,23 +213,21 @@ export default function Amenities() {
             <Grid item xs={12}>
               <Typography variant="h5" color="primary" className="room-title">
                 Premium Room
-            </Typography>
+              </Typography>
             </Grid>
-            <br />
-            <Grid item container xs={12} spacing={2} justify="center">
-              <Grid item >
-                <Chip color="primary" label={`Amenities Cost: ₹${PAcost.toFixed(2)}`} variant="outlined" className="chip" />
-              </Grid>
-              <Grid item>
-                <Chip color="primary" label={`Marketing Cost: ₹${PMcost.toFixed(2)}`} variant="outlined" className="chip" />
-              </Grid>
+            <Grid item xs={12} xl={6}>
+              <Chip size="small" color="primary" label={`Amenities Cost: ₹${PAcost.toFixed(2)}`} variant="outlined" className="chip-small" />
             </Grid>
-            <br />
-            <Grid item >
-              <Chip color="primary" label={`Cost per room: ₹${cpr_P.toFixed(2)}`} variant="outlined" className="chip" />
+            <Grid item xs={12} xl={6}>
+              <Chip size="small" color="primary" label={`Marketing Cost: ₹${PMcost.toFixed(2)}`} variant="outlined" className="chip-small" />
             </Grid>
-            <br />
-            <Grid item>
+            <Grid item xs={12} xl={10}>
+              <Chip size="small" color="primary" label={`Cost per room: ₹${cpr_P.toFixed(2)}`} variant="outlined" className="chip-small" />
+              <Typography variant="body1" color="primary">
+                Cost per rooms includes fixed charges
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
               <TextInput
                 id="pReason"
                 type="text"
@@ -238,24 +242,24 @@ export default function Amenities() {
               />
             </Grid>
             <br />
-            <Typography variant="h5" color="primary" className="login-head">
-              Standard Room
-            </Typography>
-            <br />
-            <Grid item container xs={12} spacing={2} justify="center">
-              <Grid item >
-                <Chip color="primary" label={`Amenities Cost: ₹${EAcost.toFixed(2)}`} variant="outlined" className="chip" />
-              </Grid>
-              <Grid item>
-                <Chip color="primary" label={`Marketing Cost: ₹${EMcost.toFixed(2)}`} variant="outlined" className="chip" />
-              </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h5" color="primary" className="login-head">
+                Standard Room
+              </Typography>
             </Grid>
-            <br />
-            <Grid item>
-              <Chip color="primary" label={`Cost per room: ₹${cpr_E.toFixed(2)}`} variant="outlined" className="chip" />
+            <Grid item xs={12} xl={6}>
+              <Chip size="small" color="primary" label={`Amenities Cost: ₹${EAcost.toFixed(2)}`} variant="outlined" className="chip-small" />
             </Grid>
-            <br />
-            <Grid item>
+            <Grid item xs={12} xl={6}>
+              <Chip size="small" color="primary" label={`Marketing Cost: ₹${EMcost.toFixed(2)}`} variant="outlined" className="chip-small" />
+            </Grid>
+            <Grid item xs={12} xl={10}>
+              <Chip size="small" color="primary" label={`Cost per room: ₹${cpr_E.toFixed(2)}`} variant="outlined" className="chip-small" />
+              <Typography variant="body1" color="primary">
+                Cost per rooms includes fixed charges
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
               <TextInput
                 id="eReason"
                 type="text"

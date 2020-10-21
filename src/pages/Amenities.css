@@ -12,6 +12,17 @@
     border-color: #009c07 !important;
 }
 
+.chip-small {
+    height: 30px !important;
+    margin: 2px 0 !important;
+    min-width: 60% !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    border-radius: 15px !important;
+    color: #444444 !important;
+    border-color: #009c07 !important;
+}
+
 .room-title {
     font-family: 'Inter', sans-serif !important;
     color: #009C07 !important;

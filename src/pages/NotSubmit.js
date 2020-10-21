@@ -38,7 +38,7 @@ function NotSub() {
                         setNotAmenities([...res.data.result])
                     }
                     else {
-                        setNotAmenities([{code: res.data.message}]);
+                        setNotAmenities([{ code: res.data.message }]);
                     }
                 });
         }
@@ -63,7 +63,7 @@ function NotSub() {
                         setNotCampaign([...res.data.result]);
                     }
                     else {
-                        setNotCampaign([{code: res.data.message}]);
+                        setNotCampaign([{ code: res.data.message }]);
                     }
                 });
         }
@@ -76,9 +76,9 @@ function NotSub() {
     useEffect(() => {
         let isAdmin = localStorage.getItem("userType");
         if (isAdmin !== "A") {
-          setRedirect(true);
+            setRedirect(true);
         }
-      }, [isLoggedIn]);
+    }, [isLoggedIn]);
 
     if (redirect) {
         return <Redirect to="/" />;
@@ -111,7 +111,7 @@ function NotSub() {
                         </List>
                     </Grid>
                     <Grid item xs={12} md={6} justify="center">
-                    <Typography >Campaign Form</Typography>
+                        <Typography >Campaign Form</Typography>
                         <ActionButton
                             className="login-btn"
                             onClick={getCampaign}

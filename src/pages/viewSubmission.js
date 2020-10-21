@@ -56,7 +56,7 @@ function ViewSub() {
         }
         catch (error) {
             console.log(error);
-            setRedirect(true);
+            // setRedirect(true);
         }
         setLoading(false);
     }
@@ -86,12 +86,15 @@ function ViewSub() {
         }
         catch (error) {
             console.log(error);
-            setRedirect(true);
+            // setRedirect(true);
         }
         setLoading(false);
     }
 
     useEffect(() => {
+        if (localStorage.getItem('authToken') === null) {
+            setRedirect(true);
+        }
         getAmenities();
         getCampaign();
     }, [isLoggedIn]);
