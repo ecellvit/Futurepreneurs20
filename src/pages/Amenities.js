@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import InfoContext from "../context/InfoContext";
 import { Redirect } from "react-router-dom";
-import { Grid, Typography, Chip, CircularProgress } from '@material-ui/core';
+import { Grid, Typography, Chip, CircularProgress, Slider } from '@material-ui/core';
 import SimpleTabs from '../components/SimpleTabs';
 import TextInput from "../components/TextInput";
 import './Amenities.css';
@@ -18,7 +18,7 @@ export default function Amenities() {
   const [isLoading, setLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const [Message, setMessage] = useState("");
-  const [numPremium, setNumPremium] = useState(2);
+  const [numPremium, setNumPremium] = useState(4);
   const [numEconomy, setNumEconomy] = useState(3);
   const [selectedPremium, setPremium] = useState([]);
   const [selectedEconomy, setEconomy] = useState([]);
@@ -109,7 +109,7 @@ export default function Amenities() {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('authToken')===null) {
+    if (localStorage.getItem('authToken') === null) {
       setRedirect(true);
     }
   }, [isLoggedIn]);
@@ -214,32 +214,31 @@ export default function Amenities() {
               <Typography variant="h5" color="primary" className="room-title">
                 Premium Room
               </Typography>
+              <br />
+              <br />
+              <Slider
+                defaultValue={4}
+                aria-labelledby="discrete-slider"
+                valueLabelDisplay="on"
+                step={1}
+                marks
+                min={2}
+                max={4}
+                style={{ margin: '30 20% 0 20% !important', width: '60%' }}
+              />
+              <Typography variant="body1" color="primary">Number of Rooms </Typography>
             </Grid>
-            <Grid item xs={12} xl={6}>
+            {/* <Grid item xs={12} xl={10}>
               <Chip size="small" color="primary" label={`Amenities Cost: ₹${PAcost.toFixed(2)}`} variant="outlined" className="chip-small" />
             </Grid>
-            <Grid item xs={12} xl={6}>
+            <Grid item xs={12} xl={10}>
               <Chip size="small" color="primary" label={`Marketing Cost: ₹${PMcost.toFixed(2)}`} variant="outlined" className="chip-small" />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} xl={10}>
               <Chip size="small" color="primary" label={`Cost per room: ₹${cpr_P.toFixed(2)}`} variant="outlined" className="chip-small" />
-              <Typography variant="body1" color="primary">
-                Cost per rooms includes fixed charges
-              </Typography>
             </Grid>
-            <Grid item xs={12}>
-              <TextInput
-                id="pReason"
-                type="text"
-                label="Type here"
-                className="input"
-                helperText="Reason for choosing these amenities"
-                value={pReason}
-                onChange={handlePReasonChange}
-                variant="outlined"
-                multiline
-                rows={3}
-              />
+            <Grid item xs={12} xl={10}>
+              <Chip size="small" color="primary" label={`Total Cost for Premium Rooms: ₹${cpr_P.toFixed(2)}`} variant="outlined" className="chip-small" />
             </Grid>
             <br />
             <Grid item xs={12}>
@@ -247,10 +246,10 @@ export default function Amenities() {
                 Standard Room
               </Typography>
             </Grid>
-            <Grid item xs={12} xl={6}>
+            <Grid item xs={12} xl={10}>
               <Chip size="small" color="primary" label={`Amenities Cost: ₹${EAcost.toFixed(2)}`} variant="outlined" className="chip-small" />
             </Grid>
-            <Grid item xs={12} xl={6}>
+            <Grid item xs={12} xl={10}>
               <Chip size="small" color="primary" label={`Marketing Cost: ₹${EMcost.toFixed(2)}`} variant="outlined" className="chip-small" />
             </Grid>
             <Grid item xs={12} xl={10}>
@@ -258,20 +257,6 @@ export default function Amenities() {
               <Typography variant="body1" color="primary">
                 Cost per rooms includes fixed charges
               </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <TextInput
-                id="eReason"
-                type="text"
-                label="Type here"
-                className="input"
-                helperText="Reason for choosing these amenities"
-                value={eReason}
-                onChange={handleEReasonChange}
-                variant="outlined"
-                multiline
-                rows={3}
-              />
             </Grid>
           </Grid>
           <Grid item container direction="column" spacing={2} xs={12} sm={6} md={8} lg={9}>
@@ -287,6 +272,38 @@ export default function Amenities() {
                 setSelectedEM={setSelectedEM}
               />
             </Grid>
+          </Grid>
+
+        </Grid>
+        <br />
+        <br />
+        <Grid item container spacing={2} xs={12} >
+          <Grid item xs={12} sm={6}>
+            <TextInput
+              id="pReason"
+              type="text"
+              label="Reason for choosing these amenities for Premium Rooms"
+              helperText=""
+              value={pReason}
+              onChange={handlePReasonChange}
+              variant="outlined"
+              multiline
+              rows={5}
+              style={{ width: '95%' }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextInput
+              id="eReason"
+              type="text"
+              label="Reason for choosing these amenities for Standard Rooms"
+              value={eReason}
+              onChange={handleEReasonChange}
+              variant="outlined"
+              multiline
+              rows={5}
+              style={{ width: '95%' }}
+            />
           </Grid>
         </Grid>
       </Grid>

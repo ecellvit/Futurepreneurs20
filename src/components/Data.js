@@ -121,7 +121,7 @@ const Marketing = [
         src: "./assets/social.png"
     },
     {
-        title: "TV Advertisemnets",
+        title: "TV Advertisements",
         cost: 3000,
         src: "./assets/tv-ads.png"
     },

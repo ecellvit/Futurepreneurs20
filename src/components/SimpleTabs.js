@@ -103,9 +103,13 @@ export default function SimpleTabs(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} className="scroll">
+
+        <Typography variant="h4" color="primary" className="marketing">
+          Amenities {props.selectedPremium.length}/5
+          </Typography>
         <Grid container spacing={3} justify="center">
           {PremiumAmenities.map(pre => (
-            <Grid item xs={12} md={6} lg={4} xl={3} onClick={() => togglePremium(pre)} >
+            <Grid item xs={12} md={6} lg={3} onClick={() => togglePremium(pre)} >
               <SimpleCard
                 title={pre.title}
                 cost={pre.cost}
@@ -116,8 +120,8 @@ export default function SimpleTabs(props) {
                       ? "3px #009C07 solid" : "3px transparent solid",
                     backgroundColor: props.selectedPremium.indexOf(pre) !== -1
                       ? "#009C07" : "#FFFFFF",
-                    color:  props.selectedPremium.indexOf(pre) !== -1
-                    ? "#FFFFFF" : "#000000"
+                    color: props.selectedPremium.indexOf(pre) !== -1
+                      ? "#FFFFFF" : "#000000"
                   }
                 } />
             </Grid>
@@ -125,12 +129,12 @@ export default function SimpleTabs(props) {
         </Grid>
         <br />
         <Typography variant="h4" color="primary" className="marketing">
-          Marketing
+          Method of Marketing {props.selectedPM === null ? 0 : 1}/1
         </Typography>
         <br />
         <Grid container spacing={3} justify="center">
           {Marketing.map(pre => (
-            <Grid item xs={12} md={6} lg={4} xl={3} onClick={() => togglePremiumM(pre)} >
+            <Grid item xs={12} md={6} lg={3} onClick={() => togglePremiumM(pre)} >
               <SimpleCard
                 title={pre.title}
                 cost={pre.cost}
@@ -141,8 +145,8 @@ export default function SimpleTabs(props) {
                       ? "3px #009C07 solid" : "3px transparent solid",
                     backgroundColor: props.selectedPM === pre
                       ? "#009C07" : "#FFFFFF",
-                    color:  props.selectedPM === pre
-                    ? "#FFFFFF" : "#000000"
+                    color: props.selectedPM === pre
+                      ? "#FFFFFF" : "#000000"
                   }
                 } />
             </Grid>
@@ -150,9 +154,12 @@ export default function SimpleTabs(props) {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1} className="scroll">
+        <Typography variant="h4" color="primary" className="marketing">
+          Amenities {props.selectedEconomy.length}/5
+          </Typography>
         <Grid container spacing={3} justify="center">
           {EconomyAmenities.map(eco => (
-            <Grid item xs={12} md={6} lg={4} xl={3} onClick={() => toggleEconomy(eco)} >
+            <Grid item xs={12} md={6} lg={3} onClick={() => toggleEconomy(eco)} >
               <SimpleCard
                 title={eco.title}
                 cost={eco.cost}
@@ -163,8 +170,8 @@ export default function SimpleTabs(props) {
                       ? "3px #009C07 solid" : "3px transparent solid",
                     backgroundColor: props.selectedEconomy.indexOf(eco) !== -1
                       ? "#009C07" : "#FFFFFF",
-                    color:  props.selectedEconomy.indexOf(eco) !== -1
-                    ? "#FFFFFF" : "#000000"
+                    color: props.selectedEconomy.indexOf(eco) !== -1
+                      ? "#FFFFFF" : "#000000"
                   }
                 } />
             </Grid>
@@ -172,12 +179,12 @@ export default function SimpleTabs(props) {
         </Grid>
         <br />
         <Typography variant="h4" color="primary" className="marketing">
-          Marketing
+          Method of Marketing {props.selectedEM === null ? 0 : 1}/1
         </Typography>
         <br />
         <Grid container spacing={3} justify="center">
           {Marketing.map(pre => (
-            <Grid item xs={12} md={6} lg={4} xl={3} onClick={() => toggleEconomyM(pre)} >
+            <Grid item xs={12} md={6} lg={3} onClick={() => toggleEconomyM(pre)} >
               <SimpleCard
                 title={pre.title}
                 cost={pre.cost}
@@ -188,8 +195,8 @@ export default function SimpleTabs(props) {
                       ? "3px #009C07 solid" : "3px transparent solid",
                     backgroundColor: props.selectedEM === pre
                       ? "#009C07" : "#FFFFFF",
-                    color:  props.selectedEM === pre
-                    ? "#FFFFFF" : "#000000"
+                    color: props.selectedEM === pre
+                      ? "#FFFFFF" : "#000000"
                   }
                 } />
             </Grid>

@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   img: {
     objectFit: 'cover',
     width: '100%',
-    height: 270
+    height: 200
   }
 });
 
@@ -27,11 +27,11 @@ export default function SimpleCard(props) {
       <CardContent className={classes.content}>
         <img className={classes.img} src={props.imageSource} alt={props.title} />
         <div className="img-overlay">
-          <Typography variant="h4" className={classes.title}>
+          <Typography variant="h5" className={classes.title}>
             {props.title}
           </Typography>
         </div>
-        <Typography variant="h3" className={classes.pos} >
+        <Typography variant="h4" className={classes.pos} >
           ₹{props.cost}
         </Typography>
       </CardContent>
