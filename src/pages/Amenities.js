@@ -18,7 +18,7 @@ export default function Amenities() {
   const [isLoading, setLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const [Message, setMessage] = useState("");
-  const [numPremium, setNumPremium] = useState(4);
+  const [numPremium, setNumPremium] = useState(2);
   const [numEconomy, setNumEconomy] = useState(3);
   const [selectedPremium, setPremium] = useState([]);
   const [selectedEconomy, setEconomy] = useState([]);
@@ -28,7 +28,11 @@ export default function Amenities() {
   const [eReason, setEReason] = useState("");
   const [cpr_P, setP] = useState(0);
   const [cpr_E, setE] = useState(0);
+  const [TotalPcost,setTotalPcost] = useState(0);
+  const [TotalEcost,setTotalEcost] = useState(0);
+  const [Random , SetRandom] = useState(0);
 
+ 
   const { isLoggedIn } = useContext(
     InfoContext
   );
@@ -146,17 +150,26 @@ export default function Amenities() {
 
   useEffect(() => {
     if (selectedPM !== null || selectedPremium.length !== 0)
-      setP(PAcost + PMcost + 3200 + (6000 / numPremium));
+      setP(PAcost + (PMcost/ numPremium) + 3200 + (6000 / numPremium));
     else
       setP(0);
   }, [PAcost, PMcost, numPremium, selectedPM, selectedPremium]);
 
   useEffect(() => {
     if (selectedEM !== null || selectedEconomy.length !== 0)
-      setE(EAcost + EMcost + 1700 + (9000 / numEconomy));
+      setE(EAcost + (EMcost/ numEconomy) + 1700 + (9000 / numEconomy));
     else
       setE(0);
   }, [EAcost, EMcost, numEconomy, selectedEM, selectedEconomy]);
+
+  useEffect(() => {
+    setTotalPcost(cpr_P*numPremium);
+  }, [cpr_P,  numPremium]);
+
+  useEffect(() => {
+    setTotalEcost(cpr_E*numEconomy);
+  }, [cpr_E,  numEconomy]);
+
 
   if (redirect) {
     return <Redirect to="/" />
@@ -164,50 +177,8 @@ export default function Amenities() {
 
   return (
     <div className="amenities-page-container">
+      <br />
       <Grid container direction="column" spacing={2}>
-        <Grid item container xs={12} spacing={2} justify="center">
-          <Grid item xs={12} sm={6} md={3}>
-            <TextInput
-              id="no_of_premium"
-              type="number"
-              label="Number of Premium Rooms"
-              className="input"
-              value={numPremium}
-              onChange={handlenumPremiumChange}
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <TextInput
-              id="no_of_economy"
-              type="number"
-              label="Number of Standard Rooms"
-              className="input"
-              value={numEconomy}
-              onChange={handlenumEconomyChange}
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Chip color="primary" label={`Total Cost: ₹${totalCost.toFixed(2)}`} variant="outlined" className="chip" />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <ActionButton
-              onClick={handleSubmit}
-              children={!isLoading ? (
-                "Submit"
-              ) : (
-                  <CircularProgress
-                    color="secondary"
-                    size={20}
-                    thickness={5}
-                  />
-                )}
-              className="submit-btn"
-            />
-            <Typography variant="h6" color="secondary" className="submit-message">{Message}</Typography>
-          </Grid>
-        </Grid>
         <Grid item container xs={12} >
           <Grid item container xs={12} sm={6} md={4} lg={3} justify="center" >
             <Grid item xs={12}>
@@ -217,9 +188,10 @@ export default function Amenities() {
               <br />
               <br />
               <Slider
-                defaultValue={4}
+                defaultValue={2}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="on"
+                onChange={handlenumPremiumChange}
                 step={1}
                 marks
                 min={2}
@@ -238,25 +210,40 @@ export default function Amenities() {
               <Chip size="small" color="primary" label={`Cost per room: ₹${cpr_P.toFixed(2)}`} variant="outlined" className="chip-small" />
             </Grid>
             <Grid item xs={12} xl={10}>
-              <Chip size="small" color="primary" label={`Total Cost for Premium Rooms: ₹${cpr_P.toFixed(2)}`} variant="outlined" className="chip-small" />
+              <Chip size="small" color="primary" label={`Total Cost for Premium Rooms: ₹${TotalPcost.toFixed(2)}`} variant="outlined" className="chip-small" />
             </Grid>
             <br />
             <Grid item xs={12}>
               <Typography variant="h5" color="primary" className="login-head">
                 Standard Room
               </Typography>
-            </Grid>
-            <Grid item xs={12} xl={10}>
-              <Chip size="small" color="primary" label={`Amenities Cost: ₹${EAcost.toFixed(2)}`} variant="outlined" className="chip-small" />
-            </Grid>
-            <Grid item xs={12} xl={10}>
-              <Chip size="small" color="primary" label={`Marketing Cost: ₹${EMcost.toFixed(2)}`} variant="outlined" className="chip-small" />
+              <br />
+              <br />
+              <Slider
+                defaultValue={3}
+                aria-labelledby="discrete-slider"
+                valueLabelDisplay="on"
+                onChange={handlenumEconomyChange}
+                step={1}
+                marks
+                min={3}
+                max={6}
+                style={{ margin: '30 20% 0 20% !important', width: '60%' }}
+              />
+              <Typography variant="body1" color="primary">Number of Rooms </Typography>
             </Grid>
             <Grid item xs={12} xl={10}>
               <Chip size="small" color="primary" label={`Cost per room: ₹${cpr_E.toFixed(2)}`} variant="outlined" className="chip-small" />
-              <Typography variant="body1" color="primary">
-                Cost per rooms includes fixed charges
+            </Grid>
+            <Grid item xs={12} xl={10}>
+              <Chip size="small" color="primary" label={`Total Cost for Standard Rooms: ₹${TotalEcost.toFixed(2)}`} variant="outlined" className="chip-small" />
+            </Grid>
+            <Grid item xs={12} justify="center">
+              <Typography variant="h5" color="primary" className="login-head">
+                Total Cost
               </Typography>
+              <br />
+              <Chip size="small" color="primary" label={`₹${cpr_P.toFixed(2)}`} variant="outlined" className="chip-small" />
             </Grid>
           </Grid>
           <Grid item container direction="column" spacing={2} xs={12} sm={6} md={8} lg={9}>
@@ -277,32 +264,51 @@ export default function Amenities() {
         </Grid>
         <br />
         <br />
-        <Grid item container spacing={2} xs={12} >
-          <Grid item xs={12} sm={6}>
-            <TextInput
-              id="pReason"
-              type="text"
-              label="Reason for choosing these amenities for Premium Rooms"
-              helperText=""
-              value={pReason}
-              onChange={handlePReasonChange}
-              variant="outlined"
-              multiline
-              rows={5}
-              style={{ width: '95%' }}
-            />
+        <Grid item container direction="column" spacing={2} justify="center">
+          <Grid item container spacing={2} xs={12} >
+            <Grid item xs={12} sm={6}>
+              <TextInput
+                id="pReason"
+                type="text"
+                label="Reason for choosing these amenities for Premium Rooms"
+                helperText=""
+                value={pReason}
+                onChange={handlePReasonChange}
+                variant="outlined"
+                multiline
+                rows={5}
+                style={{ width: '95%' }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextInput
+                id="eReason"
+                type="text"
+                label="Reason for choosing these amenities for Standard Rooms"
+                value={eReason}
+                onChange={handleEReasonChange}
+                variant="outlined"
+                multiline
+                rows={5}
+                style={{ width: '95%' }}
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextInput
-              id="eReason"
-              type="text"
-              label="Reason for choosing these amenities for Standard Rooms"
-              value={eReason}
-              onChange={handleEReasonChange}
-              variant="outlined"
-              multiline
-              rows={5}
-              style={{ width: '95%' }}
+          <br />
+          <Grid item xs={12} >
+            <Typography variant="h6" color="secondary" className="submit-message">{Message}</Typography>
+            <ActionButton
+              onClick={handleSubmit}
+              children={!isLoading ? (
+                "Submit"
+              ) : (
+                  <CircularProgress
+                    color="secondary"
+                    size={20}
+                    thickness={5}
+                  />
+                )}
+              className="submit-btn"
             />
           </Grid>
         </Grid>

@@ -103,7 +103,6 @@ export default function SimpleTabs(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} className="scroll">
-
         <Typography variant="h4" color="primary" className="marketing">
           Amenities {props.selectedPremium.length}/5
           </Typography>
