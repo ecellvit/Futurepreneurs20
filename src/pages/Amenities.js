@@ -30,21 +30,17 @@ export default function Amenities() {
   const [cpr_E, setE] = useState(0);
   const [TotalPcost,setTotalPcost] = useState(0);
   const [TotalEcost,setTotalEcost] = useState(0);
-  const [Random , SetRandom] = useState(0);
-
- 
+  
   const { isLoggedIn } = useContext(
     InfoContext
   );
 
-  const handlenumPremiumChange = (event) => {
-    if (event.target.value <= 4 && event.target.value >= 2)
-      setNumPremium(event.target.value);
+  const handlenumPremiumChange = (event,newValue) => {
+      setNumPremium(newValue);
   }
 
-  const handlenumEconomyChange = (event) => {
-    if (event.target.value <= 6 && event.target.value >= 3)
-      setNumEconomy(event.target.value);
+  const handlenumEconomyChange = (event,newValue) => {
+      setNumEconomy(newValue);
   }
 
   const handlePReasonChange = (event) => {
@@ -243,7 +239,7 @@ export default function Amenities() {
                 Total Cost
               </Typography>
               <br />
-              <Chip size="small" color="primary" label={`₹${cpr_P.toFixed(2)}`} variant="outlined" className="chip-small" />
+              <Chip size="small" color="primary" label={`₹${totalCost.toFixed(2)}`} variant="outlined" className="chip-small" />
             </Grid>
           </Grid>
           <Grid item container direction="column" spacing={2} xs={12} sm={6} md={8} lg={9}>
