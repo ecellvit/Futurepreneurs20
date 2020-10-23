@@ -18,8 +18,8 @@ export default function Amenities() {
   const [isLoading, setLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const [Message, setMessage] = useState("");
-  const [numPremium, setNumPremium] = useState(2);
-  const [numEconomy, setNumEconomy] = useState(3);
+  const [numPremium, setNumPremium] = useState(4);
+  const [numEconomy, setNumEconomy] = useState(6);
   const [selectedPremium, setPremium] = useState([]);
   const [selectedEconomy, setEconomy] = useState([]);
   const [selectedPM, setSelectedPM] = useState(null);
