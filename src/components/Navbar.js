@@ -31,11 +31,11 @@ function Navbar() {
 	})
 
 	return (
-		<AppBar position="static" className="navbar" elevation={0}>
+		<AppBar position="fixed" className="navbar" elevation={0}>
 			<Toolbar className="nav-toolbar">
 				<Link to="/" className="nav-links">
 					<img
-						src="./favicon1.png"
+						src="./favicon.png"
 						alt="brand logo"
 						className="nav-logo"
 					/>

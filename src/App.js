@@ -12,6 +12,7 @@ import Campaign from "./pages/Campaign";
 import ViewSub from "./pages/viewSubmission";
 import NotSub from "./pages/NotSubmit";
 import ViewSubAdmin from "./pages/viewSubAdmin";
+import Footer from "./components/Footer";
 
 
 
@@ -47,6 +48,7 @@ function App() {
           <Route exact path="/viewSub" component={ViewSubAdmin} />
           <Route path="*" component={ErrorPage} />
         </Switch>
+        <Footer/>
       </Router>
     </InfoContext.Provider>
   );

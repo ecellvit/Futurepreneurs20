@@ -105,7 +105,7 @@ function ViewSub() {
 
     return (
         <div className="amenities-page-container">
-            {isLoading ? <CircularProgress />
+            {isLoading ? <div className="inner-data"><CircularProgress /></div>
                 : <div className="inner-data">
                     <Typography variant="h3" color="primary" className="login-head">
                         Amenities
@@ -115,29 +115,31 @@ function ViewSub() {
                             <Typography variant="h4" >Total Cost: {amenitiesCost}</Typography>
                             <Grid container spacing={5}>
                                 <Grid item xs={12} md={6} justify="center">
-                                    <Typography variant="h5" >Premium Rooms (Cost per Room: {amenitiesPremium.cpr === null ? 0 : amenitiesPremium.cpr})</Typography>
+                                    <Typography variant="h4" >Premium Rooms</Typography>
+                                    <Typography variant="h6" >Cost per Room: {amenitiesPremium.cpr === null ? 0 : amenitiesPremium.cpr}</Typography>
                                     <Typography variant="h6" >Number of Room: {amenitiesPremium.number === null ? 2 : amenitiesPremium.number}</Typography>
-                                    <List subheader={<ListSubheader>Amenities</ListSubheader>}>
-                                        {(amenitiesPremium.amenities).map((amen) => <ListItem>
+                                    <List subheader={<ListSubheader>Amenities</ListSubheader>} dense="true">
+                                        {(amenitiesPremium.amenities).map((amen) => <ListItem key={amen.cost}>
                                             <ListItemText primary={amen.title} secondary={'₹' + amen.cost} />
                                         </ListItem>)}
                                     </List>
                                     <List subheader={<ListSubheader>Marketing</ListSubheader>}>
-                                        <ListItem>
+                                        <ListItem key={(amenitiesPremium.marketing).cost}>
                                             <ListItemText primary={(amenitiesPremium.marketing).title} secondary={'₹' + (amenitiesPremium.marketing).cost} />
                                         </ListItem>
                                     </List>
                                 </Grid>
                                 <Grid item xs={12} md={6} justify="center">
-                                    <Typography variant="h5" >Standard Rooms (Cost per Room: {amenitiesEconomy.cpr === null ? 0 : amenitiesEconomy.cpr})</Typography>
+                                    <Typography variant="h4" >Standard Rooms</Typography>
+                                    <Typography variant="h6" >Cost per Room: {amenitiesEconomy.cpr === null ? 0 : amenitiesEconomy.cpr}</Typography>
                                     <Typography variant="h6" >Number of Room: {amenitiesEconomy.number === null ? 0 : amenitiesEconomy.number}</Typography>
-                                    <List subheader={<ListSubheader>Amenities</ListSubheader>}>
-                                        {(amenitiesEconomy.amenities).map((amen) => <ListItem>
+                                    <List subheader={<ListSubheader>Amenities</ListSubheader>} dense="true">
+                                        {(amenitiesEconomy.amenities).map((amen) => <ListItem key={amen.cost}>
                                             <ListItemText primary={amen.title} secondary={'₹' + amen.cost} />
                                         </ListItem>)}
                                     </List>
                                     <List subheader={<ListSubheader>Marketing</ListSubheader>}>
-                                        <ListItem>
+                                        <ListItem key={(amenitiesEconomy.marketing).cost}>
                                             <ListItemText primary={(amenitiesEconomy.marketing).title} secondary={'₹' + (amenitiesEconomy.marketing).cost} />
                                         </ListItem>
                                     </List>
