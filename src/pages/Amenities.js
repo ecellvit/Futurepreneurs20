@@ -132,12 +132,12 @@ export default function Amenities() {
 
   useEffect(() => {
     if (selectedEM !== null)
-      setEMcost((selectedEM.cost / numEconomy));
+      setEMcost((selectedEM.cost));
   }, [numEconomy, selectedEM]);
 
   useEffect(() => {
     if (selectedPM !== null)
-      setPMcost((selectedPM.cost / numPremium));
+      setPMcost((selectedPM.cost));
   }, [numPremium, selectedPM]);
 
   useEffect(() => {
@@ -184,7 +184,7 @@ export default function Amenities() {
               <br />
               <br />
               <Slider
-                defaultValue={2}
+                defaultValue={4}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="on"
                 onChange={handlenumPremiumChange}
@@ -216,7 +216,7 @@ export default function Amenities() {
               <br />
               <br />
               <Slider
-                defaultValue={3}
+                defaultValue={6}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="on"
                 onChange={handlenumEconomyChange}
